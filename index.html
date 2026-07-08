@@ -1,0 +1,615 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>蔡梵志 & 彭湘晴 の婚禮邀請｜2027.03.27 台中</title>
+<meta name="description" content="誠摯邀請您參加我們的婚禮，2027年3月27日（六）午宴，台中蘭克斯特 Lancaster House，敬請回覆出席。">
+
+<!-- Open Graph（LINE 分享預覽用，design-spec 第 11 節） -->
+<meta property="og:title" content="蔡梵志 & 彭湘晴 の婚禮邀請｜2027.03.27 台中">
+<meta property="og:description" content="誠摯邀請您參加我們的婚禮，台中 蘭克斯特 Lancaster House，敬請回覆出席。">
+<meta property="og:image" content="assets/og-cover.jpg"><!-- 1200×630，⟨待製作⟩：套本站色系與襯線姓名的分享圖 -->
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#FBF7F2">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">跳到主要內容</a>
+
+<!-- 導覽列 -->
+<header class="site-nav" id="siteNav">
+  <div class="container site-nav__inner">
+    <a href="#hero" class="site-nav__brand">蔡 &amp; 彭</a>
+    <nav class="site-nav__links" aria-label="頁內導覽">
+      <a href="#timeline">流程</a>
+      <a href="#location">地點</a>
+      <a href="#rsvp">回覆</a>
+    </nav>
+    <a href="#rsvp" class="btn btn--primary btn--sm">回覆出席</a>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ============================================================
+     區塊 1/7：Hero
+     ============================================================ -->
+<section id="hero" class="hero section--bg" aria-label="Hero 首屏">
+  <svg class="sprig sprig--tl" width="140" height="140" viewBox="0 0 160 160" aria-hidden="true">
+    <path d="M80 150 C80 100 70 60 40 30" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+    <g fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round">
+      <path d="M74 118 C60 112 50 116 44 128"/><path d="M72 96 C58 90 48 94 42 106"/>
+      <path d="M68 74 C56 66 46 70 40 82"/><path d="M60 52 C50 44 42 46 36 58"/>
+      <path d="M78 128 C90 122 100 126 106 138"/><path d="M74 104 C86 98 96 102 102 114"/>
+      <path d="M70 80 C82 72 92 76 98 88"/>
+    </g>
+  </svg>
+  <svg class="sprig sprig--br" width="140" height="140" viewBox="0 0 160 160" aria-hidden="true">
+    <path d="M80 150 C80 100 70 60 40 30" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+    <g fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round">
+      <path d="M74 118 C60 112 50 116 44 128"/><path d="M72 96 C58 90 48 94 42 106"/>
+      <path d="M68 74 C56 66 46 70 40 82"/><path d="M60 52 C50 44 42 46 36 58"/>
+      <path d="M78 128 C90 122 100 126 106 138"/><path d="M74 104 C86 98 96 102 102 114"/>
+      <path d="M70 80 C82 72 92 76 98 88"/>
+    </g>
+  </svg>
+
+  <div class="hero__inner">
+    <span class="eyebrow">The Wedding Of</span>
+    <h1 class="hero__name">
+      <span>蔡梵志</span><span class="hero__amp">&amp;</span><span>彭湘晴</span>
+    </h1>
+
+    <div class="hero__divider divider" aria-hidden="true">
+      <span class="divider__line"></span>
+      <svg class="divider__mark" width="26" height="26" viewBox="0 0 26 26">
+        <path d="M13 2 C15 8 15 18 13 24 C11 18 11 8 13 2 Z" fill="none" stroke="currentColor" stroke-width="1"/>
+        <path d="M13 13 C9 11 7 13 4 13 M13 13 C17 11 19 13 22 13" fill="none" stroke="currentColor" stroke-width="1"/>
+      </svg>
+      <span class="divider__line"></span>
+    </div>
+
+    <p class="hero__date">2027 . 03 . 27<span class="hero__date-sub">（週六）午宴</span></p>
+    <p class="hero__location">台中 · 蘭克斯特 Lancaster House</p>
+
+    <!-- 倒數計時（可選元件，JS 開啟；降級時預設不顯示） -->
+    <div class="hero__countdown" id="countdown" aria-live="off">
+      <div class="hero__countdown-item"><span class="hero__countdown-num" id="cd-days">00</span><span class="hero__countdown-label">天</span></div>
+      <div class="hero__countdown-item"><span class="hero__countdown-num" id="cd-hours">00</span><span class="hero__countdown-label">時</span></div>
+      <div class="hero__countdown-item"><span class="hero__countdown-num" id="cd-minutes">00</span><span class="hero__countdown-label">分</span></div>
+      <div class="hero__countdown-item"><span class="hero__countdown-num" id="cd-seconds">00</span><span class="hero__countdown-label">秒</span></div>
+    </div>
+    <p class="hero__married" id="married-msg">我們結婚了 ♡</p>
+
+    <svg class="hero__scroll-hint" width="20" height="32" viewBox="0 0 20 32" aria-hidden="true">
+      <path d="M10 2 V26 M3 19 L10 27 L17 19" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ============================================================
+     區塊 2/7：婚紗照 Gallery
+     ============================================================ -->
+<section id="gallery" class="section--bg-alt" aria-labelledby="gallery-heading">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Moments</span>
+      <h2 class="section-head__title" id="gallery-heading">我們的故事</h2>
+      <p class="section-head__lead">婚紗照｜照片準備中，敬請期待</p>
+    </div>
+
+    <!-- 換圖方式：把 figure 內的 .ph 整塊換成 <img>，保留相同容器 class 與 aspect-ratio，
+         圖檔放 assets/photos/，統一 object-fit: cover、loading="lazy"，並填寫中文 alt。
+         範例：
+         <figure class="gallery-item reveal">
+           <img src="assets/photos/01.jpg" alt="蔡梵志與彭湘晴婚紗照" loading="lazy"
+                style="aspect-ratio:4/5; width:100%; height:100%; object-fit:cover; border-radius:var(--radius-lg);">
+           <figcaption class="gallery-cap">⟨可選說明文字⟩</figcaption>
+         </figure> -->
+    <div class="gallery-grid">
+      <figure class="gallery-item reveal" style="--i:0">
+        <div class="ph">
+          <svg class="ph__icon" width="48" height="48" viewBox="0 0 48 48" aria-hidden="true">
+            <rect x="6" y="14" width="36" height="24" rx="3" fill="none" stroke="currentColor" stroke-width="1.4"/>
+            <circle cx="24" cy="26" r="7" fill="none" stroke="currentColor" stroke-width="1.4"/>
+            <path d="M17 14 L20 9 H28 L31 14" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+          </svg>
+          <span class="ph__text">照片準備中</span>
+        </div>
+      </figure>
+      <figure class="gallery-item reveal" style="--i:1">
+        <div class="ph">
+          <svg class="ph__icon" width="48" height="48" viewBox="0 0 48 48" aria-hidden="true">
+            <rect x="6" y="14" width="36" height="24" rx="3" fill="none" stroke="currentColor" stroke-width="1.4"/>
+            <circle cx="24" cy="26" r="7" fill="none" stroke="currentColor" stroke-width="1.4"/>
+            <path d="M17 14 L20 9 H28 L31 14" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+          </svg>
+          <span class="ph__text">照片準備中</span>
+        </div>
+      </figure>
+      <figure class="gallery-item reveal" style="--i:2">
+        <div class="ph">
+          <svg class="ph__icon" width="48" height="48" viewBox="0 0 48 48" aria-hidden="true">
+            <path d="M24 40 C24 40 8 29 8 17.5 C8 11 13 7 18.5 7 C21.5 7 24 9 24 9 C24 9 26.5 7 29.5 7 C35 7 40 11 40 17.5 C40 29 24 40 24 40 Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+          </svg>
+          <span class="ph__text">照片準備中</span>
+        </div>
+      </figure>
+      <figure class="gallery-item reveal" style="--i:3">
+        <div class="ph">
+          <svg class="ph__icon" width="48" height="48" viewBox="0 0 48 48" aria-hidden="true">
+            <rect x="6" y="14" width="36" height="24" rx="3" fill="none" stroke="currentColor" stroke-width="1.4"/>
+            <circle cx="24" cy="26" r="7" fill="none" stroke="currentColor" stroke-width="1.4"/>
+            <path d="M17 14 L20 9 H28 L31 14" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+          </svg>
+          <span class="ph__text">照片準備中</span>
+        </div>
+      </figure>
+      <figure class="gallery-item reveal" style="--i:4">
+        <div class="ph">
+          <svg class="ph__icon" width="48" height="48" viewBox="0 0 48 48" aria-hidden="true">
+            <path d="M24 40 C24 40 8 29 8 17.5 C8 11 13 7 18.5 7 C21.5 7 24 9 24 9 C24 9 26.5 7 29.5 7 C35 7 40 11 40 17.5 C40 29 24 40 24 40 Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+          </svg>
+          <span class="ph__text">照片準備中</span>
+        </div>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     區塊 3/7：時間安排 Timeline（時間軸）
+     ============================================================ -->
+<section id="timeline" class="section--bg" aria-labelledby="timeline-heading">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Schedule</span>
+      <h2 class="section-head__title" id="timeline-heading">時間安排</h2>
+      <p class="section-head__lead">儀式與婚宴時間分開，歡迎您全程參與</p>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline__group reveal" style="--i:0">
+        <h3 class="timeline__group-title">迎賓・儀式</h3>
+        <div class="timeline__item">
+          <span class="timeline__node" aria-hidden="true"></span>
+          <span class="timeline__time">10:00</span>
+          <h4 class="timeline__title">賓客入場</h4>
+          <p class="timeline__desc">請提前抵達會場，稍作休息、入座</p>
+        </div>
+        <div class="timeline__item">
+          <span class="timeline__node" aria-hidden="true"></span>
+          <span class="timeline__time">10:30</span>
+          <h4 class="timeline__title">婚禮儀式準時開始</h4>
+          <p class="timeline__desc">證婚儀式將準時開始，敬請提早入座</p>
+        </div>
+      </div>
+
+      <div class="timeline__group reveal" style="--i:1">
+        <h3 class="timeline__group-title">婚宴・午宴</h3>
+        <div class="timeline__item">
+          <span class="timeline__node" aria-hidden="true"></span>
+          <span class="timeline__time">11:30</span>
+          <h4 class="timeline__title">賓客入席</h4>
+          <p class="timeline__desc">請依桌次入座，稍候片刻</p>
+        </div>
+        <div class="timeline__item">
+          <span class="timeline__node" aria-hidden="true"></span>
+          <span class="timeline__time">12:10</span>
+          <h4 class="timeline__title">婚宴準時開席</h4>
+          <p class="timeline__desc">婚宴將準時開席，感謝您的準時蒞臨</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     區塊 4/7：地點 Location
+     ============================================================ -->
+<section id="location" class="section--bg-alt" aria-labelledby="location-heading">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Venue</span>
+      <h2 class="section-head__title" id="location-heading">婚禮地點</h2>
+      <p class="section-head__lead">台中 蘭克斯特 Lancaster House，期待與您相見</p>
+    </div>
+
+    <div class="location__grid">
+      <div class="map-embed reveal" style="--i:0">
+        <iframe
+          src="https://www.google.com/maps?q=%E8%98%AD%E5%85%8B%E6%96%AF%E7%89%B9%20Lancaster%20House%20%E8%87%BA%E4%B8%AD%E5%B8%82%E5%8C%97%E5%B1%AF%E5%8D%80%E5%B4%87%E5%BE%B7%E8%B7%AF%E4%BA%8C%E6%AE%B5347%E8%99%9F&output=embed"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="蘭克斯特 Lancaster House 地圖"></iframe>
+      </div>
+
+      <div class="venue-card card reveal" style="--i:1">
+        <span class="eyebrow venue-card__eyebrow">Venue</span>
+        <h3 class="venue-card__name">台中 蘭克斯特 Lancaster House</h3>
+        <p class="venue-card__address" id="venue-address">臺中市北屯區崇德路二段347號</p>
+        <button type="button" class="btn btn--text venue-card__copy" id="copyAddressBtn" data-address="臺中市北屯區崇德路二段347號">
+          複製地址
+        </button>
+        <div class="venue-card__actions">
+          <a class="btn btn--primary" href="https://www.google.com/maps/search/?api=1&query=%E8%98%AD%E5%85%8B%E6%96%AF%E7%89%B9+Lancaster+House+%E8%87%BA%E4%B8%AD%E5%B8%82%E5%8C%97%E5%B1%AF%E5%8D%80%E5%B4%87%E5%BE%B7%E8%B7%AF%E4%BA%8C%E6%AE%B5347%E8%99%9F" target="_blank" rel="noopener">用 Google 地圖開啟</a>
+          <a class="btn btn--ghost" href="https://www.google.com/maps/dir/?api=1&destination=%E8%98%AD%E5%85%8B%E6%96%AF%E7%89%B9+Lancaster+House+%E8%87%BA%E4%B8%AD%E5%B8%82%E5%8C%97%E5%B1%AF%E5%8D%80%E5%B4%87%E5%BE%B7%E8%B7%AF%E4%BA%8C%E6%AE%B5347%E8%99%9F" target="_blank" rel="noopener">一鍵導航</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     區塊 5/7：RSVP 表單
+     ============================================================ -->
+<section id="rsvp" class="section--bg" aria-labelledby="rsvp-heading">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">RSVP</span>
+      <h2 class="section-head__title" id="rsvp-heading">敬邀您的出席</h2>
+      <p class="section-head__lead">請於 2027/2/28 前回覆，讓我們為您預留座位。</p>
+    </div>
+
+    <div class="card form-card reveal">
+      <!-- endpoint 未設定時的友善提示 -->
+      <p class="form-notice form-notice--warning" id="endpointNotice" role="status">
+        表單後端尚未設定完成，目前無法送出回覆，請直接聯繫新人，或稍後再試一次。
+      </p>
+      <!-- 送出失敗時的訊息 -->
+      <p class="form-notice form-notice--error" id="submitErrorNotice" role="alert"></p>
+
+      <form id="rsvpForm" novalidate>
+
+        <!-- Q1 姓名 -->
+        <div class="field" id="field-q1">
+          <label class="field__label" for="q1">Q1｜可以留下您的大名嗎？<span class="req">*</span></label>
+          <input class="input" type="text" id="q1" name="q1_name" required
+                 aria-describedby="q1-hint q1-error" placeholder="請輸入您的姓名">
+          <p class="field__hint" id="q1-hint">會用來核對賓客名單與喜帖</p>
+          <p class="field__error" id="q1-error" role="alert">請填寫您的姓名</p>
+        </div>
+
+        <!-- Q2 賓客身分 -->
+        <fieldset class="field" id="field-q2">
+          <legend class="field__label">Q2｜請問您是新郎／新娘哪一邊的親友呢？<span class="req">*</span></legend>
+          <div class="choice-group" role="radiogroup" aria-describedby="q2-error">
+            <label class="choice" data-type="radio">
+              <input type="radio" name="q2_relation" value="男方（新郎）親友" required>
+              <span class="choice__box" aria-hidden="true"></span>
+              <span>男方（新郎）親友</span>
+            </label>
+            <label class="choice" data-type="radio">
+              <input type="radio" name="q2_relation" value="女方（新娘）親友" required>
+              <span class="choice__box" aria-hidden="true"></span>
+              <span>女方（新娘）親友</span>
+            </label>
+            <label class="choice" data-type="radio">
+              <input type="radio" name="q2_relation" value="雙方共同朋友" required>
+              <span class="choice__box" aria-hidden="true"></span>
+              <span>雙方共同朋友</span>
+            </label>
+            <label class="choice" data-type="radio">
+              <input type="radio" name="q2_relation" value="其他" required>
+              <span class="choice__box" aria-hidden="true"></span>
+              <span>其他</span>
+            </label>
+          </div>
+          <p class="field__error" id="q2-error" role="alert">請選擇一個選項</p>
+        </fieldset>
+
+        <!-- Q3 是否參加證婚儀式 -->
+        <fieldset class="field" id="field-q3">
+          <legend class="field__label">Q3｜是否會參加 10:30 開始的證婚儀式？<span class="req">*</span></legend>
+          <div class="choice-group" role="radiogroup" aria-describedby="q3-error">
+            <label class="choice" data-type="radio">
+              <input type="radio" name="q3_ceremony" value="會參加，準時到場見證" required>
+              <span class="choice__box" aria-hidden="true"></span>
+              <span>會參加，準時到場見證</span>
+            </label>
+            <label class="choice" data-type="radio">
+              <input type="radio" name="q3_ceremony" value="不參加儀式" required>
+              <span class="choice__box" aria-hidden="true"></span>
+              <span>不參加儀式</span>
+            </label>
+          </div>
+          <p class="field__error" id="q3-error" role="alert">請選擇一個選項</p>
+        </fieldset>
+
+        <!-- Q4 是否參加婚宴 -->
+        <fieldset class="field" id="field-q4">
+          <legend class="field__label">Q4｜是否會參加 12:10 開席的婚宴？<span class="req">*</span></legend>
+          <div class="choice-group" role="radiogroup" aria-describedby="q4-error">
+            <label class="choice" data-type="radio">
+              <input type="radio" name="q4_banquet" value="一定出席，麻煩算我一份！" required>
+              <span class="choice__box" aria-hidden="true"></span>
+              <span>一定出席，麻煩算我一份！</span>
+            </label>
+            <label class="choice" data-type="radio">
+              <input type="radio" name="q4_banquet" value="禮到人不到，仍請保留祝福" required>
+              <span class="choice__box" aria-hidden="true"></span>
+              <span>禮到人不到，仍請保留祝福</span>
+            </label>
+            <label class="choice" data-type="radio">
+              <input type="radio" name="q4_banquet" value="無法出席，獻上誠摯祝福" required>
+              <span class="choice__box" aria-hidden="true"></span>
+              <span>無法出席，獻上誠摯祝福</span>
+            </label>
+          </div>
+          <p class="field__error" id="q4-error" role="alert">請選擇一個選項</p>
+        </fieldset>
+
+        <!-- Q5-Q7：只在 Q4 選「一定出席」時顯示（vanilla JS 控制 hidden 屬性與 required） -->
+        <div class="field-group" id="q4-detail" hidden>
+
+          <div class="field-row">
+            <!-- Q5 出席大人人數 -->
+            <div class="field" id="field-q5">
+              <label class="field__label" for="q5">Q5｜出席婚宴的大人人數（不含兒童）<span class="req">*</span></label>
+              <input class="input" type="number" id="q5" name="q5_adults" min="0" step="1" inputmode="numeric"
+                     aria-describedby="q5-error" placeholder="例如：2">
+              <p class="field__error" id="q5-error" role="alert">請填寫大於等於 0 的數字</p>
+            </div>
+
+            <!-- Q6 出席兒童人數 -->
+            <div class="field" id="field-q6">
+              <label class="field__label" for="q6">Q6｜出席婚宴的兒童人數（12 歲以下）<span class="req">*</span></label>
+              <input class="input" type="number" id="q6" name="q6_children" min="0" step="1" inputmode="numeric"
+                     aria-describedby="q6-hint q6-error" placeholder="無則填 0">
+              <p class="field__hint" id="q6-hint">無則填 0</p>
+              <p class="field__error" id="q6-error" role="alert">請填寫大於等於 0 的數字</p>
+            </div>
+          </div>
+
+          <!-- Q7 兒童座椅/兒童餐 -->
+          <fieldset class="field" id="field-q7">
+            <legend class="field__label">Q7｜是否需要兒童座椅或兒童餐？</legend>
+            <div class="choice-group" role="radiogroup">
+              <label class="choice" data-type="radio">
+                <input type="radio" name="q7_childneeds" value="不需要">
+                <span class="choice__box" aria-hidden="true"></span>
+                <span>不需要</span>
+              </label>
+              <label class="choice" data-type="radio">
+                <input type="radio" name="q7_childneeds" value="需要兒童座椅">
+                <span class="choice__box" aria-hidden="true"></span>
+                <span>需要兒童座椅</span>
+              </label>
+              <label class="choice" data-type="radio">
+                <input type="radio" name="q7_childneeds" value="需要兒童餐">
+                <span class="choice__box" aria-hidden="true"></span>
+                <span>需要兒童餐</span>
+              </label>
+              <label class="choice" data-type="radio">
+                <input type="radio" name="q7_childneeds" value="兒童座椅與兒童餐都需要">
+                <span class="choice__box" aria-hidden="true"></span>
+                <span>兒童座椅與兒童餐都需要</span>
+              </label>
+            </div>
+          </fieldset>
+        </div>
+
+        <!-- Q8 用餐習慣 -->
+        <fieldset class="field" id="field-q8">
+          <legend class="field__label">Q8｜用餐習慣（葷食／素食）<span class="req">*</span></legend>
+          <div class="choice-group" role="radiogroup" aria-describedby="q8-error">
+            <label class="choice" data-type="radio">
+              <input type="radio" name="q8_diet" value="葷食皆可" required>
+              <span class="choice__box" aria-hidden="true"></span>
+              <span>葷食皆可</span>
+            </label>
+            <label class="choice" data-type="radio">
+              <input type="radio" name="q8_diet" value="全素（不含蛋奶）" required>
+              <span class="choice__box" aria-hidden="true"></span>
+              <span>全素（不含蛋奶）</span>
+            </label>
+            <label class="choice" data-type="radio">
+              <input type="radio" name="q8_diet" value="蛋奶素" required>
+              <span class="choice__box" aria-hidden="true"></span>
+              <span>蛋奶素</span>
+            </label>
+            <label class="choice" data-type="radio">
+              <input type="radio" name="q8_diet" value="其他（請於下題說明）" required>
+              <span class="choice__box" aria-hidden="true"></span>
+              <span>其他（請於下題說明）</span>
+            </label>
+          </div>
+          <p class="field__error" id="q8-error" role="alert">請選擇一個選項</p>
+        </fieldset>
+
+        <!-- Q9 過敏/飲食禁忌 -->
+        <div class="field" id="field-q9">
+          <label class="field__label" for="q9">Q9｜有特殊飲食禁忌或過敏食材嗎？</label>
+          <input class="input" type="text" id="q9" name="q9_allergy" placeholder="例：不吃牛肉、對海鮮過敏">
+        </div>
+
+        <!-- Q10 喜帖寄送 -->
+        <fieldset class="field" id="field-q10">
+          <legend class="field__label">Q10｜喜帖需要寄送嗎？<span class="req">*</span></legend>
+          <div class="choice-group" role="radiogroup" aria-describedby="q10-error">
+            <label class="choice" data-type="radio">
+              <input type="radio" name="q10_invitation" value="想收到紙本喜帖，請寄給我" required>
+              <span class="choice__box" aria-hidden="true"></span>
+              <span>想收到紙本喜帖，請寄給我</span>
+            </label>
+            <label class="choice" data-type="radio">
+              <input type="radio" name="q10_invitation" value="請寄電子喜帖給我（環保愛地球）" required>
+              <span class="choice__box" aria-hidden="true"></span>
+              <span>請寄電子喜帖給我（環保愛地球）</span>
+            </label>
+            <label class="choice" data-type="radio">
+              <input type="radio" name="q10_invitation" value="不需要，我都知道婚禮資訊了" required>
+              <span class="choice__box" aria-hidden="true"></span>
+              <span>不需要，我都知道婚禮資訊了</span>
+            </label>
+          </div>
+          <p class="field__error" id="q10-error" role="alert">請選擇一個選項</p>
+        </fieldset>
+
+        <!-- Q11：只在 Q10 選「紙本喜帖」時顯示 -->
+        <div class="field-group" id="q10-detail" hidden>
+          <div class="field" id="field-q11">
+            <label class="field__label" for="q11">Q11｜喜帖寄送地址<span class="req">*</span></label>
+            <input class="input" type="text" id="q11" name="q11_address"
+                   aria-describedby="q11-error" placeholder="請填寫完整收件地址">
+            <p class="field__error" id="q11-error" role="alert">請填寫喜帖寄送地址</p>
+          </div>
+        </div>
+
+        <!-- Q12 手機號碼 -->
+        <div class="field" id="field-q12">
+          <label class="field__label" for="q12">Q12｜您的手機號碼<span class="req">*</span></label>
+          <input class="input" type="tel" id="q12" name="q12_phone" required
+                 aria-describedby="q12-error" placeholder="例：0912345678">
+          <p class="field__error" id="q12-error" role="alert">請填寫手機號碼</p>
+        </div>
+
+        <!-- Q13 Email/LINE ID -->
+        <div class="field" id="field-q13">
+          <label class="field__label" for="q13">Q13｜Email 或 LINE ID（方便通知婚禮相關訊息）</label>
+          <input class="input" type="text" id="q13" name="q13_contact" placeholder="Email 或 LINE ID">
+        </div>
+
+        <!-- Q14 停車需求 -->
+        <fieldset class="field" id="field-q14">
+          <legend class="field__label">Q14｜是否需要開車前來、有停車需求？</legend>
+          <div class="choice-group" role="radiogroup">
+            <label class="choice" data-type="radio">
+              <input type="radio" name="q14_parking" value="不開車">
+              <span class="choice__box" aria-hidden="true"></span>
+              <span>不開車</span>
+            </label>
+            <label class="choice" data-type="radio">
+              <input type="radio" name="q14_parking" value="開車前來，需要 1 個車位">
+              <span class="choice__box" aria-hidden="true"></span>
+              <span>開車前來，需要 1 個車位</span>
+            </label>
+            <label class="choice" data-type="radio">
+              <input type="radio" name="q14_parking" value="開車前來，需要 2 個以上車位（請於祝福留言註明車輛數）">
+              <span class="choice__box" aria-hidden="true"></span>
+              <span>開車前來，需要 2 個以上車位（請於祝福留言註明車輛數）</span>
+            </label>
+          </div>
+        </fieldset>
+
+        <!-- Q15 祝福留言 -->
+        <div class="field" id="field-q15">
+          <label class="field__label" for="q15">Q15｜想對我們說的話（祝福留言）</label>
+          <textarea class="input" id="q15" name="q15_message" rows="4" placeholder="想對我們說的話……"></textarea>
+        </div>
+
+        <!-- Honeypot：一般使用者看不到，機器人常會自動填寫，後端會一併檢查 -->
+        <div class="field field--honeypot" aria-hidden="true">
+          <label for="q_website">公司網址（請勿填寫）</label>
+          <input type="text" id="q_website" name="website" tabindex="-1" autocomplete="off">
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn--primary btn--full" id="submitBtn">
+            <span class="btn__label">送出回覆</span>
+          </button>
+        </div>
+      </form>
+
+      <div class="form-success" id="formSuccess" role="status" aria-live="polite">
+        <div class="form-success__icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 13l4 4L19 7" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <p class="form-success__title">已收到您的回覆</p>
+        <p class="form-success__text">謝謝您撥空回覆，我們期待與您相見 ♡</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     區塊 6/7：小叮嚀
+     ============================================================ -->
+<section id="tips" class="section--bg-alt" aria-labelledby="tips-heading">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Good To Know</span>
+      <h2 class="section-head__title" id="tips-heading">給您的小叮嚀</h2>
+    </div>
+
+    <div class="tips-grid">
+      <div class="tip-card card reveal" style="--i:0">
+        <svg class="tip-card__icon" width="40" height="40" viewBox="0 0 40 40" aria-hidden="true">
+          <rect x="7" y="10" width="26" height="18" rx="3" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <circle cx="13" cy="28" r="2.5" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <circle cx="27" cy="28" r="2.5" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <path d="M7 18 H33" stroke="currentColor" stroke-width="1.4"/>
+        </svg>
+        <h3 class="tip-card__title">交通</h3>
+        <p class="tip-card__text">會場位於台中北屯，鄰近⟨主要幹道/交流道⟩。建議搭乘計程車至「蘭克斯特 Lancaster House」。</p>
+      </div>
+      <div class="tip-card card reveal" style="--i:1">
+        <svg class="tip-card__icon" width="40" height="40" viewBox="0 0 40 40" aria-hidden="true">
+          <rect x="9" y="6" width="22" height="28" rx="3" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <path d="M16 13 H24 M16 20 H24 M16 27 H21" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+        </svg>
+        <h3 class="tip-card__title">停車</h3>
+        <p class="tip-card__text">現場備有停車位，⟨數量/是否免費⟩；車位有限，建議共乘或多加利用大眾運輸。</p>
+      </div>
+      <div class="tip-card card reveal" style="--i:2">
+        <svg class="tip-card__icon" width="40" height="40" viewBox="0 0 40 40" aria-hidden="true">
+          <path d="M14 8 L20 12 L26 8 L30 12 L26 16 V32 H14 V16 L10 12 Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+        </svg>
+        <h3 class="tip-card__title">服裝</h3>
+        <p class="tip-card__text">無特定 dress code，誠摯邀請您以⟨半正式 / 明亮色系⟩前來，一起留下美好合影。</p>
+      </div>
+      <div class="tip-card card reveal" style="--i:3">
+        <svg class="tip-card__icon" width="40" height="40" viewBox="0 0 40 40" aria-hidden="true">
+          <circle cx="20" cy="20" r="13" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <path d="M20 13 V20 L25 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <h3 class="tip-card__title">兒童 / 其他</h3>
+        <p class="tip-card__text">⟨如有其他叮嚀，於此補充⟩。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================================================
+     區塊 7/7：頁尾（含 LINE bot 預留位）
+     ============================================================ -->
+<footer id="footer" class="site-footer">
+  <div class="container">
+    <p class="site-footer__monogram">蔡 &amp; 彭</p>
+    <p class="site-footer__date">2027.03.27　台中 蘭克斯特 Lancaster House</p>
+
+    <div class="divider divider--dark" aria-hidden="true">
+      <span class="divider__line"></span>
+      <svg class="divider__mark" width="26" height="26" viewBox="0 0 26 26">
+        <path d="M13 2 C15 8 15 18 13 24 C11 18 11 8 13 2 Z" fill="none" stroke="currentColor" stroke-width="1"/>
+        <path d="M13 13 C9 11 7 13 4 13 M13 13 C17 11 19 13 22 13" fill="none" stroke="currentColor" stroke-width="1"/>
+      </svg>
+      <span class="divider__line"></span>
+    </div>
+
+    <!-- LINE bot 預留位：之後啟用時，把下方 disabled 按鈕換成 LINE 綠 (#06C755) 加好友按鈕並移除 disabled -->
+    <div class="linebot-slot">
+      <svg class="linebot-slot__icon" width="36" height="36" viewBox="0 0 36 36" aria-hidden="true">
+        <path d="M18 6 C9.5 6 3 11.6 3 18.5 C3 24.6 8.3 29.7 15.4 30.7 C15.9 30.8 16.6 31.1 16.8 31.6 C16.9 32 16.9 32.7 16.8 33.1 C16.8 33.1 16.6 34.3 16.5 34.6 C16.4 35 16.2 35.9 18 35.3 C19.8 34.7 27.6 29.9 31 26 C33.4 23.5 33 21 33 18.5 C33 11.6 26.5 6 18 6 Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+      </svg>
+      <p class="linebot-slot__title">LINE 智慧小幫手</p>
+      <p class="linebot-slot__text">即將上線，屆時可用 LINE 詢問婚禮資訊</p>
+      <button type="button" class="btn btn--ghost-dark" disabled aria-disabled="true">敬請期待</button>
+    </div>
+
+    <div class="site-footer__bottom">
+      <p class="site-footer__copyright">© 2027 蔡梵志 &amp; 彭湘晴</p>
+      <a href="#hero" class="btn btn--ghost-dark btn--sm">回頂端</a>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
