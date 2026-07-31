@@ -4,7 +4,7 @@
  * 用途：一鍵建立一份與網站 RSVP 表單相同 15 題的 Google 表單，
  * 作為網站表單以外的備用回覆管道（例如網站故障、或有賓客不方便用網頁時）。
  *
- * 使用方式：見 apps-script/SETUP.md。簡單說是「開新的 Apps Script 專案、
+ * 使用方式：見 docs/SETUP.md。簡單說是「開新的 Apps Script 專案、
  * 貼上這個檔案的內容、執行 createWeddingRSVPForm 這個函式」。
  *
  * 重要差異（Google 表單原生限制，簡化處理，見 SETUP.md 詳細說明）：

@@ -7,9 +7,9 @@
 // 部署完成後，把網址貼到下面雙引號中間（保留單引號，不要有多餘空白）。
 // 範例：const FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbx.../exec';
 // 尚未設定（空字串）時，表單送出會顯示友善提示，不會噴錯或壞掉。
-// 詳細部署步驟請見 apps-script/SETUP.md。
+// 詳細部署步驟請見 docs/SETUP.md。
 // ------------------------------------------------------------
-const FORM_ENDPOINT = '';
+const FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbycfZCNFJV1gv1jiWWE4bePpEsCiNLCSRrSxocK0h2zAermxoXO8jF6sxdZvj9XfBRH/exec';
 
 (function () {
   'use strict';

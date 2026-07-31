@@ -2,7 +2,7 @@
  * 蔡梵志 & 彭湘晴 婚禮 RSVP 表單後端
  * ------------------------------------------------------------
  * 用途：接收網站 RSVP 表單（js/main.js 送出的 JSON），驗證後寫入 Google 試算表。
- * 設定步驟：請見 apps-script/SETUP.md（給非工程師看的逐步教學）。
+ * 設定步驟：請見 docs/SETUP.md（給非工程師看的逐步教學）。
  *
  * 重要：前端用 `Content-Type: text/plain` 送出 JSON 字串是刻意設計，
  * 目的是避免瀏覽器對跨網域 POST 發出 CORS preflight（OPTIONS）——
