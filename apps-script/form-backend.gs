@@ -108,6 +108,12 @@ function getOrCreateSheet() {
     sheet.appendRow(HEADERS);
     sheet.setFrozenRows(1);
   }
+  // Q12 手機號碼是 0 開頭，試算表若當數字存會自動吃掉開頭的 0
+  // （例如 0912345678 變成 912345678）。把整欄固定成純文字格式，
+  // 之後寫入的值就不會被自動轉成數字。每次呼叫都執行一次，
+  // 這樣舊試算表（欄位還沒被格式化過）也會在下一次送出時被修正。
+  var phoneCol = HEADERS.indexOf('Q12 手機號碼') + 1;
+  sheet.getRange(1, phoneCol, sheet.getMaxRows(), 1).setNumberFormat('@');
   return sheet;
 }
 
