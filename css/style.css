@@ -16,36 +16,36 @@ a { color: inherit; }
 /* ---------- 2. 色彩系統（design-spec 2.1） ---------- */
 :root {
   /* 背景 */
-  --color-bg:          #FBF7F2; /* 主背景・暖象牙白 */
-  --color-bg-alt:      #F3EDE6; /* 交錯區塊背景・暖米 */
-  --color-bg-deep:     #EFE6DC; /* 卡片/表單容器底・深米 */
+  --color-bg:          #FAF7FB; /* 主背景・薰衣白 */
+  --color-bg-alt:      #F1EAF4; /* 交錯區塊背景・淡薰衣紫 */
+  --color-bg-deep:     #E9DEEE; /* 卡片/表單容器底・深薰衣紫 */
   --color-white:       #FFFFFF; /* 輸入框、卡片純白底 */
 
   /* 文字 */
-  --color-ink:         #3A342E; /* 主文字・深棕炭 */
-  --color-ink-soft:    #6E6459; /* 次要文字/說明・暖灰褐 */
+  --color-ink:         #352F3D; /* 主文字・深紫炭 */
+  --color-ink-soft:    #635971; /* 次要文字/說明・霧紫灰 */
 
-  /* 主色（陶土玫瑰） */
-  --color-primary:      #9C5A4E; /* 連結、按鈕、強調 */
-  --color-primary-dark: #7E463C; /* hover / active */
-  --color-primary-soft: #EADFD7; /* 主色淡底・pill/tag 背景 */
+  /* 主色（優雅紫） */
+  --color-primary:      #6D4C7D; /* 連結、按鈕、強調 */
+  --color-primary-dark: #54395F; /* hover / active */
+  --color-primary-soft: #EFE6F2; /* 主色淡底・pill/tag 背景 */
 
-  /* 輔色（鼠尾草綠） */
-  --color-sage:        #7C8B76; /* 裝飾線條、大字級輔色（非正文） */
-  --color-sage-dark:   #5F6E58; /* 可作正文的深鼠尾草 */
+  /* 輔色（霧灰紫） */
+  --color-sage:        #9A8AA3; /* 裝飾線條、大字級輔色（非正文） */
+  --color-sage-dark:   #6F5F79; /* 可作正文的深霧紫 */
 
-  /* 裝飾金（僅細線 / 圖形，禁用於文字） */
+  /* 裝飾金（僅細線 / 圖形，禁用於文字；與紫色系仍為經典配色） */
   --color-gold:        #C9A96A;
 
   /* 界線 */
-  --color-line:        #E4DAD0; /* 分隔線、輸入框邊框 */
+  --color-line:        #DED1E3; /* 分隔線、輸入框邊框 */
 
   /* 狀態色 */
   --color-error:       #B23A48; --color-error-bg:   #FBEDEE;
   --color-success:     #357052; --color-success-bg: #E9F3EC;
 
   /* focus ring 用（主色 18% 透明） */
-  --focus-ring:        0 0 0 3px rgba(156, 90, 78, 0.22);
+  --focus-ring:        0 0 0 3px rgba(109, 76, 125, 0.22);
 
   /* ---------- 3. 字型系統 ---------- */
   --font-serif: "Noto Serif TC", "Songti TC", serif;
@@ -71,8 +71,8 @@ a { color: inherit; }
   --container-narrow:  640px;
   --gutter:            20px;
   --radius-sm: 6px; --radius-md: 12px; --radius-lg: 20px; --radius-pill: 999px;
-  --shadow-sm: 0 1px 2px rgba(58,52,46,.06), 0 2px 8px rgba(58,52,46,.05);
-  --shadow-md: 0 4px 16px rgba(58,52,46,.08), 0 14px 34px rgba(58,52,46,.06);
+  --shadow-sm: 0 1px 2px rgba(53,47,61,.06), 0 2px 8px rgba(53,47,61,.05);
+  --shadow-md: 0 4px 16px rgba(53,47,61,.08), 0 14px 34px rgba(53,47,61,.06);
 }
 @media (min-width: 600px) { :root { --gutter: 32px; --fs-eyebrow: 13px; } }
 @media (min-width: 1200px) { :root { --gutter: 40px; } }
@@ -216,6 +216,7 @@ section { padding-block: var(--space-2xl); position: relative; }
 .hero {
   min-height: 100svh; display: flex; align-items: center; justify-content: center;
   text-align: center; overflow: hidden; padding-block: var(--space-2xl);
+  background: radial-gradient(ellipse 140% 90% at 50% 0%, var(--color-bg-deep) 0%, var(--color-bg-alt) 35%, var(--color-bg) 75%);
 }
 .hero__inner { position: relative; max-width: 720px; margin-inline: auto; padding-inline: var(--gutter); }
 .hero__name {
@@ -445,7 +446,7 @@ select.input { appearance: none; padding-right: 44px;
    ============================================================ */
 .site-footer { background: var(--color-ink); color: var(--color-bg); padding-block: var(--space-3xl); text-align: center; }
 .site-footer__monogram { font: 600 28px/1 var(--font-serif); }
-.site-footer__date { margin-top: var(--space-sm); font-size: var(--fs-small); color: #C9BEB2; }
+.site-footer__date { margin-top: var(--space-sm); font-size: var(--fs-small); color: #C6BBD1; }
 
 .linebot-slot { max-width: 480px; margin: var(--space-lg) auto 0; background: var(--color-primary-soft);
   border-radius: var(--radius-md); padding: var(--space-lg); color: var(--color-ink); }
@@ -454,7 +455,7 @@ select.input { appearance: none; padding-right: 44px;
 .linebot-slot__text { font-size: var(--fs-small); color: var(--color-ink-soft); margin-bottom: var(--space-md); }
 
 .site-footer__bottom { margin-top: var(--space-xl); display: flex; flex-direction: column; align-items: center; gap: var(--space-md); }
-.site-footer__copyright { font-size: var(--fs-small); color: #C9BEB2; }
+.site-footer__copyright { font-size: var(--fs-small); color: #C6BBD1; }
 
 @media (min-width: 900px) {
   .site-footer__bottom { flex-direction: row; justify-content: space-between; max-width: var(--container-max); margin-inline: auto; margin-top: var(--space-xl); }

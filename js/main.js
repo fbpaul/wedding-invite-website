@@ -162,7 +162,7 @@ const FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbycfZCNFJV1gv1jiW
 
   // ------------------------------------------------------------
   // 條件顯示邏輯：
-  //   Q5/Q6/Q7 只在 Q4 選「一定出席，麻煩算我一份！」時顯示
+  //   Q5-Q9    只在 Q4 選「一定出席，麻煩算我一份！」時顯示
   //   Q11      只在 Q10 選「想收到紙本喜帖，請寄給我」時顯示
   // ------------------------------------------------------------
   function initConditionalFields() {
@@ -170,6 +170,7 @@ const FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbycfZCNFJV1gv1jiW
     var q4Detail = document.getElementById('q4-detail');
     var q5 = document.getElementById('q5');
     var q6 = document.getElementById('q6');
+    var q8Radios = document.querySelectorAll('input[name="q8_diet"]');
 
     function updateQ4Detail() {
       var checked = document.querySelector('input[name="q4_banquet"]:checked');
@@ -178,9 +179,11 @@ const FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbycfZCNFJV1gv1jiW
       q4Detail.hidden = !attending;
       if (q5) q5.required = !!attending;
       if (q6) q6.required = !!attending;
+      q8Radios.forEach(function (r) { r.required = !!attending; });
       if (!attending) {
         clearFieldError('q5');
         clearFieldError('q6');
+        clearRadioError('q8_diet');
       }
     }
 
@@ -264,7 +267,8 @@ const FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbycfZCNFJV1gv1jiW
     }
 
     // 必填欄位（依 field id 對應：text/number → input id；radio 群組 → name）
-    var requiredTextFields = ['q1', 'q12'];
+    // 註：q12（手機號碼）另有獨立格式驗證區塊，不放進這個陣列
+    var requiredTextFields = ['q1'];
     var requiredNumberFields = ['q5', 'q6']; // 是否必填由 initConditionalFields 動態切換 .required
     var requiredRadioGroups = ['q2_relation', 'q3_ceremony', 'q4_banquet', 'q8_diet', 'q10_invitation'];
 
@@ -284,14 +288,47 @@ const FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbycfZCNFJV1gv1jiW
         }
       });
 
-      // Q11（條件必填）
+      // Q11（條件必填 + 寬鬆長度檢查，地址寫法差異大，不套嚴格 regex）
       var q11 = document.getElementById('q11');
       if (q11 && q11.required) {
         clearFieldError('q11');
-        if (!q11.value.trim()) {
+        var q11Value = q11.value.trim();
+        if (!q11Value) {
           showFieldError('q11');
           isValid = false;
           firstInvalid = firstInvalid || q11;
+        } else if (q11Value.length < 6) {
+          showFieldError('q11', '地址似乎不完整，請確認街道與門牌號都已填寫');
+          isValid = false;
+          firstInvalid = firstInvalid || q11;
+        }
+      }
+
+      // Q12 手機號碼（必填 + 台灣手機格式檢查，去除空白/連字號後比對）
+      var q12 = document.getElementById('q12');
+      if (q12) {
+        clearFieldError('q12');
+        var q12Value = q12.value.trim();
+        if (!q12Value) {
+          showFieldError('q12');
+          isValid = false;
+          firstInvalid = firstInvalid || q12;
+        } else if (!/^09\d{8}$/.test(q12Value.replace(/[\s-]/g, ''))) {
+          showFieldError('q12', '手機號碼格式不正確，請確認（例如 0912345678）');
+          isValid = false;
+          firstInvalid = firstInvalid || q12;
+        }
+      }
+
+      // Q13 Email 或 LINE ID（選填；只有含 @ 才視為 Email 並檢查格式，避免誤擋 LINE ID）
+      var q13 = document.getElementById('q13');
+      if (q13) {
+        clearFieldError('q13');
+        var q13Value = q13.value.trim();
+        if (q13Value.indexOf('@') !== -1 && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(q13Value)) {
+          showFieldError('q13', 'Email 格式看起來不完整，請確認（若要留 LINE ID 可直接輸入 ID，不需要 @ 符號）');
+          isValid = false;
+          firstInvalid = firstInvalid || q13;
         }
       }
 
@@ -310,8 +347,10 @@ const FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbycfZCNFJV1gv1jiW
         }
       });
 
-      // 單選必填群組
+      // 單選必填群組（Q8 是條件必填，DOM 上 .required 為 false 時代表目前不適用，跳過）
       requiredRadioGroups.forEach(function (name) {
+        var radios = document.querySelectorAll('input[name="' + name + '"]');
+        if (!radios.length || !radios[0].required) return;
         clearRadioError(name);
         var checked = document.querySelector('input[name="' + name + '"]:checked');
         if (!checked) {
@@ -403,6 +442,10 @@ const FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbycfZCNFJV1gv1jiW
       var fd = new FormData(formEl);
       var obj = {};
       fd.forEach(function (value, key) { obj[key] = value; });
+      // Q12 手機號碼正規化：去除空白與連字號，只影響送出值，不改動輸入框顯示內容
+      if (obj.q12_phone) {
+        obj.q12_phone = String(obj.q12_phone).replace(/[\s-]/g, '');
+      }
       obj.submittedAt = new Date().toISOString();
       return obj;
     }

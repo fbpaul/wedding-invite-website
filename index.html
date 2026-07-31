@@ -12,7 +12,7 @@
 <meta property="og:image" content="https://fbpaul.github.io/wedding-invite-website/assets/og-cover.jpg"><!-- 1200×630，⟨待製作⟩：套本站色系與襯線姓名的分享圖 -->
 <meta property="og:url" content="https://fbpaul.github.io/wedding-invite-website/">
 <meta property="og:type" content="website">
-<meta name="theme-color" content="#FBF7F2">
+<meta name="theme-color" content="#FAF7FB">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -344,7 +344,7 @@
           <p class="field__error" id="q4-error" role="alert">請選擇一個選項</p>
         </fieldset>
 
-        <!-- Q5-Q7：只在 Q4 選「一定出席」時顯示（vanilla JS 控制 hidden 屬性與 required） -->
+        <!-- Q5-Q9：只在 Q4 選「一定出席」時顯示（vanilla JS 控制 hidden 屬性與 required） -->
         <div class="field-group" id="q4-detail" hidden>
 
           <div class="field-row">
@@ -392,40 +392,58 @@
               </label>
             </div>
           </fieldset>
-        </div>
 
-        <!-- Q8 用餐習慣 -->
-        <fieldset class="field" id="field-q8">
-          <legend class="field__label">Q8｜用餐習慣（葷食／素食）<span class="req">*</span></legend>
-          <div class="choice-group" role="radiogroup" aria-describedby="q8-error">
-            <label class="choice" data-type="radio">
-              <input type="radio" name="q8_diet" value="葷食皆可" required>
-              <span class="choice__box" aria-hidden="true"></span>
-              <span>葷食皆可</span>
-            </label>
-            <label class="choice" data-type="radio">
-              <input type="radio" name="q8_diet" value="全素（不含蛋奶）" required>
-              <span class="choice__box" aria-hidden="true"></span>
-              <span>全素（不含蛋奶）</span>
-            </label>
-            <label class="choice" data-type="radio">
-              <input type="radio" name="q8_diet" value="蛋奶素" required>
-              <span class="choice__box" aria-hidden="true"></span>
-              <span>蛋奶素</span>
-            </label>
-            <label class="choice" data-type="radio">
-              <input type="radio" name="q8_diet" value="其他（請於下題說明）" required>
-              <span class="choice__box" aria-hidden="true"></span>
-              <span>其他（請於下題說明）</span>
-            </label>
+          <!-- Q8 用餐習慣（僅出席婚宴者需填寫，required 由 JS 動態控制，不寫死於 HTML） -->
+          <fieldset class="field" id="field-q8">
+            <legend class="field__label">Q8｜用餐習慣（葷食／素食）<span class="req">*</span></legend>
+            <div class="choice-group" role="radiogroup" aria-describedby="q8-error">
+              <label class="choice" data-type="radio">
+                <input type="radio" name="q8_diet" value="葷食皆可">
+                <span class="choice__box" aria-hidden="true"></span>
+                <span>葷食皆可</span>
+              </label>
+              <label class="choice" data-type="radio">
+                <input type="radio" name="q8_diet" value="全素（不含蛋奶）">
+                <span class="choice__box" aria-hidden="true"></span>
+                <span>全素（不含蛋奶）</span>
+              </label>
+              <label class="choice" data-type="radio">
+                <input type="radio" name="q8_diet" value="蛋奶素">
+                <span class="choice__box" aria-hidden="true"></span>
+                <span>蛋奶素</span>
+              </label>
+              <label class="choice" data-type="radio">
+                <input type="radio" name="q8_diet" value="其他（請於下題說明）">
+                <span class="choice__box" aria-hidden="true"></span>
+                <span>其他（請於下題說明）</span>
+              </label>
+            </div>
+            <p class="field__error" id="q8-error" role="alert">請選擇一個選項</p>
+          </fieldset>
+
+          <!-- Q9 過敏/飲食禁忌 -->
+          <div class="field" id="field-q9">
+            <label class="field__label" for="q9">Q9｜有特殊飲食禁忌或過敏食材嗎？</label>
+            <input class="input" type="text" id="q9" name="q9_allergy" placeholder="例：不吃牛肉、對海鮮過敏">
           </div>
-          <p class="field__error" id="q8-error" role="alert">請選擇一個選項</p>
-        </fieldset>
 
-        <!-- Q9 過敏/飲食禁忌 -->
-        <div class="field" id="field-q9">
-          <label class="field__label" for="q9">Q9｜有特殊飲食禁忌或過敏食材嗎？</label>
-          <input class="input" type="text" id="q9" name="q9_allergy" placeholder="例：不吃牛肉、對海鮮過敏">
+          <!-- 🍡 花好月圓小投票：加映題，不列入正式 Q1-Q15 編號，僅出席婚宴者可投票，選填 -->
+          <fieldset class="field" id="field-q-dessert-vote">
+            <legend class="field__label">🍡 花好月圓小投票｜您想吃哪一種內餡？</legend>
+            <div class="choice-group" role="radiogroup" aria-describedby="q-dessert-vote-hint">
+              <label class="choice" data-type="radio">
+                <input type="radio" name="q_dessert_vote" value="黃色＆紫色地瓜">
+                <span class="choice__box" aria-hidden="true"></span>
+                <span>黃色＆紫色地瓜</span>
+              </label>
+              <label class="choice" data-type="radio">
+                <input type="radio" name="q_dessert_vote" value="紅白小湯圓">
+                <span class="choice__box" aria-hidden="true"></span>
+                <span>紅白小湯圓</span>
+              </label>
+            </div>
+            <p class="field__hint" id="q-dessert-vote-hint">每人一票，得票最高的口味將成為當天菜單～</p>
+          </fieldset>
         </div>
 
         <!-- Q10 喜帖寄送 -->
@@ -472,7 +490,9 @@
         <!-- Q13 Email/LINE ID -->
         <div class="field" id="field-q13">
           <label class="field__label" for="q13">Q13｜Email 或 LINE ID（方便通知婚禮相關訊息）</label>
-          <input class="input" type="text" id="q13" name="q13_contact" placeholder="Email 或 LINE ID">
+          <input class="input" type="text" id="q13" name="q13_contact"
+                 aria-describedby="q13-error" placeholder="Email 或 LINE ID">
+          <p class="field__error" id="q13-error" role="alert">Email 格式看起來不完整，請確認</p>
         </div>
 
         <!-- Q14 停車需求 -->
@@ -546,7 +566,12 @@
           <path d="M7 18 H33" stroke="currentColor" stroke-width="1.4"/>
         </svg>
         <h3 class="tip-card__title">交通</h3>
-        <p class="tip-card__text">會場位於台中北屯，鄰近⟨主要幹道/交流道⟩。建議搭乘計程車至「蘭克斯特 Lancaster House」。</p>
+        <p class="tip-card__text">
+          <strong>南下</strong>：國道一號大雅交流道下，左轉環中路直行，再右轉松竹路三段、崇德路二段即可抵達。<br>
+          <strong>北上</strong>：國道一號中港交流道下，直行台灣大道，左轉文心路三段、崇德路二段即可抵達。<br>
+          <strong>高鐵</strong>：烏日站轉搭捷運淺綠線至北屯站，步行或搭公車約 10–15 分鐘即達。<br><br>
+          蘭克斯特步行 5 分鐘即達中科大飯店，外地賓客住宿方便。
+        </p>
       </div>
       <div class="tip-card card reveal" style="--i:1">
         <svg class="tip-card__icon" width="40" height="40" viewBox="0 0 40 40" aria-hidden="true">
@@ -554,14 +579,17 @@
           <path d="M16 13 H24 M16 20 H24 M16 27 H21" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
         </svg>
         <h3 class="tip-card__title">停車</h3>
-        <p class="tip-card__text">現場備有停車位，⟨數量/是否免費⟩；車位有限，建議共乘或多加利用大眾運輸。</p>
+        <p class="tip-card__text">
+          特約停車場「松竹停車場」：新人招待前 4 小時，超過部分每小時 20 元。<br><br>
+          隔壁「日月亭停車場」每小時 60 元（無特約優惠），松竹車位客滿時可作備案。
+        </p>
       </div>
       <div class="tip-card card reveal" style="--i:2">
         <svg class="tip-card__icon" width="40" height="40" viewBox="0 0 40 40" aria-hidden="true">
           <path d="M14 8 L20 12 L26 8 L30 12 L26 16 V32 H14 V16 L10 12 Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
         </svg>
         <h3 class="tip-card__title">服裝</h3>
-        <p class="tip-card__text">無特定 dress code，誠摯邀請您以⟨半正式 / 明亮色系⟩前來，一起留下美好合影。</p>
+        <p class="tip-card__text">無特定 dress code，誠摯邀請您以淺色、明亮色系穿搭前來，一起留下美好合影。</p>
       </div>
       <div class="tip-card card reveal" style="--i:3">
         <svg class="tip-card__icon" width="40" height="40" viewBox="0 0 40 40" aria-hidden="true">

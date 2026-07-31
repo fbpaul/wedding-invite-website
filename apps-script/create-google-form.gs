@@ -15,6 +15,9 @@
  *    改用題目說明文字提醒賓客「若不適用可跳過」。
  * 2. Q5/Q6（人數）在網站版是條件必填，這裡一律設為非必填，並在說明文字
  *    註明「不出席婚宴者請留空」。
+ * 3. 網站版 Q8（用餐習慣）在 Q4 選「一定出席」時才必填顯示；這裡同樣簡化成
+ *    非必填 + 說明文字。另外網站版新增了「🍡 花好月圓小投票」加映題（僅出席
+ *    午宴者適用、選填、不列入正式 15 題編號），這裡加在 Q15 之後對應。
  */
 
 function createWeddingRSVPForm() {
@@ -83,16 +86,17 @@ function createWeddingRSVPForm() {
     .setChoiceValues(['不需要', '需要兒童座椅', '需要兒童餐', '兒童座椅與兒童餐都需要'])
     .setRequired(false);
 
-  // Q8
+  // Q8（簡化：非必填，說明文字取代條件顯示，比照 Q5/Q6/Q11 的模式）
   form.addMultipleChoiceItem()
     .setTitle('Q8｜用餐習慣（葷食／素食）')
     .setChoiceValues(['葷食皆可', '全素（不含蛋奶）', '蛋奶素', '其他（請於下題說明）'])
-    .setRequired(true);
+    .setHelpText('僅出席午宴者需填寫；若不出席婚宴可留空')
+    .setRequired(false);
 
   // Q9
   form.addTextItem()
     .setTitle('Q9｜有特殊飲食禁忌或過敏食材嗎？')
-    .setHelpText('例：不吃牛肉、對海鮮過敏。無則可留空')
+    .setHelpText('例：不吃牛肉、對海鮮過敏。僅出席午宴者適用，無則可留空')
     .setRequired(false);
 
   // Q10
@@ -126,6 +130,13 @@ function createWeddingRSVPForm() {
   // Q15
   form.addParagraphTextItem()
     .setTitle('Q15｜想對我們說的話（祝福留言）')
+    .setRequired(false);
+
+  // 🍡 花好月圓小投票（加映題，非正式 Q1-Q15 編號之一，比照 Q8/Q9 僅出席午宴者適用）
+  form.addMultipleChoiceItem()
+    .setTitle('🍡 花好月圓小投票｜您想吃哪一種內餡？')
+    .setChoiceValues(['黃色＆紫色地瓜', '紅白小湯圓'])
+    .setHelpText('每人一票，得票最高的口味將成為當天菜單；僅出席午宴者需填寫，不出席可留空')
     .setRequired(false);
 
   // 建立一份新的 Google 試算表來接收表單回覆，方便與網站表單分開檢視

@@ -19,14 +19,14 @@
 
 ## 1. 視覺方向與情緒關鍵字
 
-**方向一句話**：以「暖象牙白 × 陶土玫瑰 × 鼠尾草綠」構築一封安靜而有質感的紙本邀請函感——留白慷慨、襯線標題優雅、線條纖細，手機一打開像收到一張手工卡片，溫暖、體面、不喧嘩。
+**方向一句話**：以「薰衣白 × 優雅紫 × 霧灰紫」構築一封安靜而有質感的紙本邀請函感——留白慷慨、襯線標題優雅、線條纖細，手機一打開像收到一張手工卡片，溫暖、體面、不喧嘩。（2026-08 由暖大地色系「暖象牙白 × 陶土玫瑰 × 鼠尾草綠」改版為紫色調，情緒方向與設計原則不變，僅色相調整。）
 
 **情緒關鍵字**：優雅（elegant）、溫潤（warm）、當代（modern）、克制（restrained）、手作紙感（tactile / editorial）。
 
 **設計原則（實作時的取捨準則）**：
 - **讓內容呼吸**：寧可留白過多，不要塞滿。區塊之間用大間距與細分隔線分節，不用重色塊硬切。
 - **層次靠字型與間距，不靠裝飾**：主視覺力量來自襯線標題 + 大量留白，花草線條只作點綴，絕不搶戲。
-- **暖而不甜**：採 2026 暖大地色系（陶土 / 米），刻意避開「粉紅疊粉紅」的甜膩與手繪水彩感，維持成熟高級。
+- **暖而不甜**：採柔霧紫調（優雅紫 / 薰衣白），刻意避開「粉紅疊粉紅」的甜膩與手繪水彩感，維持成熟高級。
 - **輕量動效**：淡入、微位移、細膩 hover；不做浮誇彈跳、視差、自動輪播。尊重 `prefers-reduced-motion`。
 
 ---
@@ -40,36 +40,36 @@
 ```css
 :root {
   /* 背景 */
-  --color-bg:          #FBF7F2; /* 主背景・暖象牙白 */
-  --color-bg-alt:      #F3EDE6; /* 交錯區塊背景・暖米 */
-  --color-bg-deep:     #EFE6DC; /* 卡片/表單容器底・深米 */
+  --color-bg:          #FAF7FB; /* 主背景・薰衣白 */
+  --color-bg-alt:      #F1EAF4; /* 交錯區塊背景・淡薰衣紫 */
+  --color-bg-deep:     #E9DEEE; /* 卡片/表單容器底・深薰衣紫 */
   --color-white:       #FFFFFF; /* 輸入框、卡片純白底 */
 
   /* 文字 */
-  --color-ink:         #3A342E; /* 主文字・深棕炭 */
-  --color-ink-soft:    #6E6459; /* 次要文字/說明・暖灰褐 */
+  --color-ink:         #352F3D; /* 主文字・深紫炭 */
+  --color-ink-soft:    #635971; /* 次要文字/說明・霧紫灰 */
 
-  /* 主色（陶土玫瑰） */
-  --color-primary:      #9C5A4E; /* 連結、按鈕、強調 */
-  --color-primary-dark: #7E463C; /* hover / active */
-  --color-primary-soft: #EADFD7; /* 主色淡底・pill/tag 背景 */
+  /* 主色（優雅紫） */
+  --color-primary:      #6D4C7D; /* 連結、按鈕、強調 */
+  --color-primary-dark: #54395F; /* hover / active */
+  --color-primary-soft: #EFE6F2; /* 主色淡底・pill/tag 背景 */
 
-  /* 輔色（鼠尾草綠） */
-  --color-sage:        #7C8B76; /* 裝飾線條、大字級輔色（非正文） */
-  --color-sage-dark:   #5F6E58; /* 可作正文的深鼠尾草 */
+  /* 輔色（霧灰紫） */
+  --color-sage:        #9A8AA3; /* 裝飾線條、大字級輔色（非正文） */
+  --color-sage-dark:   #6F5F79; /* 可作正文的深霧紫 */
 
-  /* 裝飾金（僅細線 / 圖形，禁用於文字） */
+  /* 裝飾金（僅細線 / 圖形，禁用於文字；與紫色系仍為經典配色） */
   --color-gold:        #C9A96A;
 
   /* 界線 */
-  --color-line:        #E4DAD0; /* 分隔線、輸入框邊框 */
+  --color-line:        #DED1E3; /* 分隔線、輸入框邊框 */
 
   /* 狀態色 */
   --color-error:       #B23A48; --color-error-bg:   #FBEDEE;
   --color-success:     #357052; --color-success-bg: #E9F3EC;
 
   /* focus ring 用（主色 18% 透明） */
-  --focus-ring:        0 0 0 3px rgba(156, 90, 78, 0.22);
+  --focus-ring:        0 0 0 3px rgba(109, 76, 125, 0.22);
 }
 ```
 
@@ -79,21 +79,23 @@
 
 | 前景 | 背景 | 對比 | 判定 | 用途 |
 |---|---|---|---|---|
-| `--color-ink` `#3A342E` | `--color-bg` `#FBF7F2` | **11.5 : 1** | AAA ✓ | **正文主色**（主要文字/背景組合） |
-| `--color-ink` `#3A342E` | `--color-bg-alt` `#F3EDE6` | 10.6 : 1 | AAA ✓ | 交錯區塊正文 |
-| `--color-ink` `#3A342E` | `--color-white` `#FFFFFF` | 12.3 : 1 | AAA ✓ | 輸入框內文字 |
-| `--color-ink-soft` `#6E6459` | `--color-bg` `#FBF7F2` | 5.4 : 1 | AA ✓ | 次要文字、說明、label |
-| `--color-ink-soft` `#6E6459` | `--color-bg-alt` `#F3EDE6` | 5.0 : 1 | AA ✓ | 交錯區塊次要文字 |
-| `--color-primary` `#9C5A4E` | `--color-bg` `#FBF7F2` | 4.9 : 1 | AA ✓ | 連結、強調文字 |
-| `--color-white` `#FFFFFF` | `--color-primary` `#9C5A4E` | 5.3 : 1 | AA ✓ | 主按鈕文字 |
-| `--color-white` `#FFFFFF` | `--color-primary-dark` `#7E463C` | 7.4 : 1 | AAA ✓ | 按鈕 hover 文字 |
-| `--color-error` `#B23A48` | `--color-bg` `#FBF7F2` | 5.5 : 1 | AA ✓ | 錯誤訊息文字 |
-| `--color-success` `#357052` | `--color-bg` `#FBF7F2` | 5.5 : 1 | AA ✓ | 成功訊息文字 |
-| `--color-sage-dark` `#5F6E58` | `--color-bg` `#FBF7F2` | 5.1 : 1 | AA ✓ | 若鼠尾草需作正文，用此深色 |
+| `--color-ink` `#352F3D` | `--color-bg` `#FAF7FB` | **12.2 : 1** | AAA ✓ | **正文主色**（主要文字/背景組合） |
+| `--color-ink` `#352F3D` | `--color-bg-alt` `#F1EAF4` | 11.0 : 1 | AAA ✓ | 交錯區塊正文 |
+| `--color-ink` `#352F3D` | `--color-white` `#FFFFFF` | 12.9 : 1 | AAA ✓ | 輸入框內文字 |
+| `--color-ink-soft` `#635971` | `--color-bg` `#FAF7FB` | 6.2 : 1 | AA ✓ | 次要文字、說明、label |
+| `--color-ink-soft` `#635971` | `--color-bg-alt` `#F1EAF4` | 5.6 : 1 | AA ✓ | 交錯區塊次要文字 |
+| `--color-ink-soft` `#635971` | `--color-primary-soft` `#EFE6F2` | 4.6 : 1 | AA ✓ | LINE bot 預留卡等淡紫底次要文字 |
+| `--color-primary` `#6D4C7D` | `--color-bg` `#FAF7FB` | 6.6 : 1 | AA ✓ | 連結、強調文字 |
+| `--color-white` `#FFFFFF` | `--color-primary` `#6D4C7D` | 7.0 : 1 | AAA ✓ | 主按鈕文字 |
+| `--color-white` `#FFFFFF` | `--color-primary-dark` `#54395F` | 9.9 : 1 | AAA ✓ | 按鈕 hover 文字 |
+| `--color-error` `#B23A48` | `--color-bg` `#FAF7FB` | 5.5 : 1 | AA ✓ | 錯誤訊息文字 |
+| `--color-success` `#357052` | `--color-bg` `#FAF7FB` | 5.5 : 1 | AA ✓ | 成功訊息文字 |
+| `--color-sage-dark` `#6F5F79` | `--color-bg` `#FAF7FB` | 5.5 : 1 | AA ✓ | 若霧紫需作正文，用此深色 |
+| `#C6BBD1`（頁尾次要文字，硬編碼於 `.site-footer__date`/`.site-footer__copyright`） | `--color-ink`（頁尾底色）`#352F3D` | 7.0 : 1 | AAA ✓ | 深底次要文字 |
 
 **禁用組合（會不合格，實作勿犯）**：
 - `--color-gold` `#C9A96A` 對背景僅 ~2.1:1 → **只能作細線/圖形，禁止當任何文字色**。
-- `--color-sage` `#7C8B76` 對背景僅 ~3.4:1 → 僅可用於**裝飾線條或 ≥24px 的大字級標籤**，禁止當正文。正文要綠色請改用 `--color-sage-dark`。
+- `--color-sage` `#9A8AA3` 對背景僅 ~3.0:1 → 僅可用於**裝飾線條或 ≥24px 的大字級標籤**，禁止當正文。正文要用輔色請改用 `--color-sage-dark`。
 
 ---
 
@@ -169,8 +171,8 @@ body { font-family: var(--font-sans); color: var(--color-ink); background: var(-
   --container-narrow:  640px; /* 正文段落 / 表單 欄寬 */
   --gutter:            20px;  /* 手機左右安全邊距 */
   --radius-sm: 6px; --radius-md: 12px; --radius-lg: 20px; --radius-pill: 999px;
-  --shadow-sm: 0 1px 2px rgba(58,52,46,.06), 0 2px 8px rgba(58,52,46,.05);
-  --shadow-md: 0 4px 16px rgba(58,52,46,.08), 0 14px 34px rgba(58,52,46,.06);
+  --shadow-sm: 0 1px 2px rgba(53,47,61,.06), 0 2px 8px rgba(53,47,61,.05);
+  --shadow-md: 0 4px 16px rgba(53,47,61,.08), 0 14px 34px rgba(53,47,61,.06);
 }
 @media (min-width: 600px) { :root { --gutter: 32px; } }
 @media (min-width: 1200px) { :root { --gutter: 40px; } }
@@ -296,7 +298,7 @@ a:focus-visible { outline: none; box-shadow: var(--focus-ring); border-radius: 2
 
 ### 6.3 其他純 CSS 裝飾
 
-- **紙質微紋理**（可選，極淡）：`background-image: radial-gradient(rgba(58,52,46,.015) 1px, transparent 1px); background-size: 4px 4px;` 疊在主背景上。
+- **紙質微紋理**（可選，極淡）：`background-image: radial-gradient(rgba(53,47,61,.015) 1px, transparent 1px); background-size: 4px 4px;` 疊在主背景上。
 - **時間軸連接線**：`1px` 直線 `--color-line` + 節點小圓（見 8.3）。
 - **首字/序號圓章**：圓形 `--color-primary-soft` 底 + `--color-primary` 數字。
 
@@ -403,13 +405,13 @@ JS 中也需守門：`const reduce = matchMedia('(prefers-reduced-motion: reduce
 
 **Placeholder 長相（定義）**：
 - 一個 `figure.gallery-item`，內含固定比例的佔位框 `.ph`。
-- `.ph` 背景：`--color-bg-deep`，疊 45° 極淡斜紋 `repeating-linear-gradient(45deg, rgba(58,52,46,.02) 0 10px, transparent 10px 20px)`，`--radius-lg`，`1px solid --color-line`。
+- `.ph` 背景：`--color-bg-deep`，疊 45° 極淡斜紋 `repeating-linear-gradient(45deg, rgba(53,47,61,.02) 0 10px, transparent 10px 20px)`，`--radius-lg`，`1px solid --color-line`。
 - 置中線描 icon（相機或花束，inline SVG，描邊 `--color-sage`，`opacity .55`，48px）＋ 下方一行 `照片準備中`（`--fs-small`, `--color-ink-soft`）。
 - 比例：主圖 `aspect-ratio: 4/5`（直式婚紗），次圖可 `3/4` 或 `1/1`。用 `aspect-ratio` 撐開版位，換圖時尺寸不跳動。
 
 ```css
 .ph { display: grid; place-items: center; aspect-ratio: 4 / 5;
-  background: var(--color-bg-deep) repeating-linear-gradient(45deg, rgba(58,52,46,.02) 0 10px, transparent 10px 20px);
+  background: var(--color-bg-deep) repeating-linear-gradient(45deg, rgba(53,47,61,.02) 0 10px, transparent 10px 20px);
   border: 1px solid var(--color-line); border-radius: var(--radius-lg); color: var(--color-sage); }
 ```
 
@@ -523,7 +525,7 @@ JS 中也需守門：`const reduce = matchMedia('(prefers-reduced-motion: reduce
 
 深色收尾，與全站淺底形成優雅對比。
 
-- **底色**：`--color-ink` `#3A342E`；文字 `--color-bg` `#FBF7F2`（此組合對比 11.5:1 ✓，等同正文倒置）；次要文字用 `#C9BEB2`（暖淺灰，對深底 ≥5:1）。
+- **底色**：`--color-ink` `#352F3D`；文字 `--color-bg` `#FAF7FB`（此組合對比 12.2:1 ✓，等同正文倒置）；次要文字用 `#C6BBD1`（冷淺紫灰，對深底 7.0:1）。
 - **內容**（置中，`--space-3xl` 上下內距）：
   1. monogram「蔡 & 彭」（serif，28px）
   2. 日期「2027.03.27　台中 蘭克斯特 Lancaster House」（`--fs-small`）
@@ -683,7 +685,7 @@ select.input { appearance: none; padding-right: 44px;
 <meta property="og:description" content="誠摯邀請您參加我們的婚禮，台中 蘭克斯特 Lancaster House，敬請回覆出席。">
 <meta property="og:image" content="assets/og-cover.jpg"><!-- 1200×630，套本規格色系與襯線姓名；⟨待製作⟩ -->
 <meta property="og:type" content="website">
-<meta name="theme-color" content="#FBF7F2">
+<meta name="theme-color" content="#FAF7FB">
 ```
 - `og:image` 未備妥前，可先用純 CSS Hero 截圖或象牙底 + 襯線姓名 + 金線的 1200×630 佔位圖。
 

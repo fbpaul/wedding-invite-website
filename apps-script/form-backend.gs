@@ -31,7 +31,8 @@ var HEADERS = [
   'Q12 手機號碼',
   'Q13 Email 或 LINE ID',
   'Q14 停車需求',
-  'Q15 祝福留言'
+  'Q15 祝福留言',
+  '花好月圓投票'
 ];
 
 /**
@@ -77,7 +78,8 @@ function doPost(e) {
       data.q12_phone || '',
       data.q13_contact || '',
       data.q14_parking || '',
-      data.q15_message || ''
+      data.q15_message || '',
+      data.q_dessert_vote || ''
     ];
     sheet.appendRow(row);
 
@@ -140,6 +142,7 @@ function test_doPost() {
         q13_contact: 'test@example.com',
         q14_parking: '不開車',
         q15_message: '祝福新人百年好合！',
+        q_dessert_vote: '黃色＆紫色地瓜',
         website: ''
       })
     }
