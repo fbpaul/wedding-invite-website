@@ -14,24 +14,26 @@
 // 試算表中存放回覆的分頁名稱（不存在時會自動建立）
 var SHEET_NAME = 'RSVP回覆';
 
-// 欄位順序與表頭：務必與 index.html 表單的 15 題一一對應
+// 欄位順序與表頭：務必與 index.html 表單的 17 題一一對應
 var HEADERS = [
   '時間戳記',
   'Q1 姓名',
   'Q2 賓客身分（新郎/新娘關係）',
-  'Q3 是否參加證婚儀式',
-  'Q4 是否參加婚宴',
-  'Q5 出席婚宴大人人數',
-  'Q6 出席婚宴兒童人數',
-  'Q7 兒童座椅或兒童餐',
-  'Q8 用餐習慣',
-  'Q9 特殊飲食禁忌或過敏',
-  'Q10 喜帖寄送方式',
-  'Q11 喜帖寄送地址',
-  'Q12 手機號碼',
-  'Q13 Email 或 LINE ID',
-  'Q14 停車需求',
-  'Q15 祝福留言',
+  'Q3 與新人關係',
+  'Q4 是否參加證婚儀式',
+  'Q5 是否參加婚宴',
+  'Q6 出席婚宴大人人數',
+  'Q7 出席婚宴兒童人數',
+  'Q8 兒童座椅或兒童餐',
+  'Q9 本人用餐習慣',
+  'Q10 同行者用餐習慣',
+  'Q11 特殊飲食禁忌或過敏',
+  'Q12 喜帖寄送方式',
+  'Q13 喜帖寄送地址',
+  'Q14 手機號碼',
+  'Q15 Email 或 LINE ID',
+  'Q16 是否開車前來',
+  'Q17 祝福留言',
   '花好月圓投票'
 ];
 
@@ -57,7 +59,7 @@ function doPost(e) {
     if (!data.q1_name || !String(data.q1_name).trim()) {
       return jsonOutput({ result: 'error', message: '姓名為必填欄位' });
     }
-    if (!data.q12_phone || !String(data.q12_phone).trim()) {
+    if (!data.q14_phone || !String(data.q14_phone).trim()) {
       return jsonOutput({ result: 'error', message: '手機號碼為必填欄位' });
     }
 
@@ -66,19 +68,21 @@ function doPost(e) {
       new Date(),
       data.q1_name || '',
       data.q2_relation || '',
-      data.q3_ceremony || '',
-      data.q4_banquet || '',
-      data.q5_adults || '',
-      data.q6_children || '',
-      data.q7_childneeds || '',
-      data.q8_diet || '',
-      data.q9_allergy || '',
-      data.q10_invitation || '',
-      data.q11_address || '',
-      data.q12_phone || '',
-      data.q13_contact || '',
-      data.q14_parking || '',
-      data.q15_message || '',
+      data.q3_connection || '',
+      data.q4_ceremony || '',
+      data.q5_banquet || '',
+      data.q6_adults || '',
+      data.q7_children || '',
+      data.q8_childneeds || '',
+      data.q9_diet_self || '',
+      data.q10_diet_guest || '',
+      data.q11_allergy || '',
+      data.q12_invitation || '',
+      data.q13_address || '',
+      data.q14_phone || '',
+      data.q15_contact || '',
+      data.q16_parking || '',
+      data.q17_message || '',
       data.q_dessert_vote || ''
     ];
     sheet.appendRow(row);
@@ -108,11 +112,11 @@ function getOrCreateSheet() {
     sheet.appendRow(HEADERS);
     sheet.setFrozenRows(1);
   }
-  // Q12 手機號碼是 0 開頭，試算表若當數字存會自動吃掉開頭的 0
+  // Q14 手機號碼是 0 開頭，試算表若當數字存會自動吃掉開頭的 0
   // （例如 0912345678 變成 912345678）。把整欄固定成純文字格式，
   // 之後寫入的值就不會被自動轉成數字。每次呼叫都執行一次，
   // 這樣舊試算表（欄位還沒被格式化過）也會在下一次送出時被修正。
-  var phoneCol = HEADERS.indexOf('Q12 手機號碼') + 1;
+  var phoneCol = HEADERS.indexOf('Q14 手機號碼') + 1;
   sheet.getRange(1, phoneCol, sheet.getMaxRows(), 1).setNumberFormat('@');
   return sheet;
 }
@@ -135,19 +139,21 @@ function test_doPost() {
       contents: JSON.stringify({
         q1_name: '測試姓名',
         q2_relation: '男方（新郎）親友',
-        q3_ceremony: '會參加，準時到場見證',
-        q4_banquet: '一定出席，麻煩算我一份！',
-        q5_adults: '2',
-        q6_children: '0',
-        q7_childneeds: '不需要',
-        q8_diet: '葷食皆可',
-        q9_allergy: '',
-        q10_invitation: '不需要，我都知道婚禮資訊了',
-        q11_address: '',
-        q12_phone: '0912345678',
-        q13_contact: 'test@example.com',
-        q14_parking: '不開車',
-        q15_message: '祝福新人百年好合！',
+        q3_connection: '朋友',
+        q4_ceremony: '會參加，準時到場見證',
+        q5_banquet: '一定出席，麻煩算我一份！',
+        q6_adults: '2',
+        q7_children: '0',
+        q8_childneeds: '不需要',
+        q9_diet_self: '葷食皆可',
+        q10_diet_guest: '葷食皆可',
+        q11_allergy: '',
+        q12_invitation: '不需要，我都知道婚禮資訊了',
+        q13_address: '',
+        q14_phone: '0912345678',
+        q15_contact: 'test@example.com',
+        q16_parking: '不開車',
+        q17_message: '祝福新人百年好合！',
         q_dessert_vote: '黃色＆紫色地瓜',
         website: ''
       })

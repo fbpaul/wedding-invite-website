@@ -162,49 +162,71 @@ const FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbycfZCNFJV1gv1jiW
 
   // ------------------------------------------------------------
   // 條件顯示邏輯：
-  //   Q5-Q9    只在 Q4 選「一定出席，麻煩算我一份！」時顯示
-  //   Q11      只在 Q10 選「想收到紙本喜帖，請寄給我」時顯示
+  //   Q6-Q11   只在 Q5 選「一定出席，麻煩算我一份！」時顯示
+  //   Q10      巢狀條件：另外要求 Q6（大人人數）目前是大於 1 的合法數字
+  //   Q13      只在 Q12 選「想收到紙本喜帖，請寄給我」時顯示
   // ------------------------------------------------------------
   function initConditionalFields() {
-    var q4Radios = document.querySelectorAll('input[name="q4_banquet"]');
-    var q4Detail = document.getElementById('q4-detail');
-    var q5 = document.getElementById('q5');
+    var q5Radios = document.querySelectorAll('input[name="q5_banquet"]');
+    var q5Detail = document.getElementById('q5-detail');
     var q6 = document.getElementById('q6');
-    var q8Radios = document.querySelectorAll('input[name="q8_diet"]');
-
-    function updateQ4Detail() {
-      var checked = document.querySelector('input[name="q4_banquet"]:checked');
-      var attending = checked && checked.value === '一定出席，麻煩算我一份！';
-      if (!q4Detail) return;
-      q4Detail.hidden = !attending;
-      if (q5) q5.required = !!attending;
-      if (q6) q6.required = !!attending;
-      q8Radios.forEach(function (r) { r.required = !!attending; });
-      if (!attending) {
-        clearFieldError('q5');
-        clearFieldError('q6');
-        clearRadioError('q8_diet');
-      }
-    }
-
-    q4Radios.forEach(function (r) { r.addEventListener('change', updateQ4Detail); });
-    updateQ4Detail();
-
-    var q10Radios = document.querySelectorAll('input[name="q10_invitation"]');
+    var q7 = document.getElementById('q7');
+    var q9Radios = document.querySelectorAll('input[name="q9_diet_self"]');
+    var q10Radios = document.querySelectorAll('input[name="q10_diet_guest"]');
     var q10Detail = document.getElementById('q10-detail');
-    var q11 = document.getElementById('q11');
 
-    function updateQ10Detail() {
-      var checked = document.querySelector('input[name="q10_invitation"]:checked');
-      var needsAddress = checked && checked.value === '想收到紙本喜帖，請寄給我';
-      if (!q10Detail) return;
-      q10Detail.hidden = !needsAddress;
-      if (q11) q11.required = !!needsAddress;
-      if (!needsAddress) clearFieldError('q11');
+    function isAttendingBanquet() {
+      var checked = document.querySelector('input[name="q5_banquet"]:checked');
+      return !!(checked && checked.value === '一定出席，麻煩算我一份！');
     }
 
-    q10Radios.forEach(function (r) { r.addEventListener('change', updateQ10Detail); });
-    updateQ10Detail();
+    // Q10（同行者用餐習慣）：Q5 出席 且 Q6 大人人數 > 1 才顯示／必填
+    function updateQ10Detail() {
+      if (!q10Detail) return;
+      var attending = isAttendingBanquet();
+      var raw = q6 ? q6.value.trim() : '';
+      var num = Number(raw);
+      var showQ10 = attending && raw !== '' && !isNaN(num) && Number.isInteger(num) && num > 1;
+      q10Detail.hidden = !showQ10;
+      q10Radios.forEach(function (r) { r.required = !!showQ10; });
+      if (!showQ10) clearRadioError('q10_diet_guest');
+    }
+
+    function updateQ5Detail() {
+      var attending = isAttendingBanquet();
+      if (!q5Detail) return;
+      q5Detail.hidden = !attending;
+      if (q6) q6.required = !!attending;
+      if (q7) q7.required = !!attending;
+      q9Radios.forEach(function (r) { r.required = !!attending; });
+      if (!attending) {
+        clearFieldError('q6');
+        clearFieldError('q7');
+        clearRadioError('q9_diet_self');
+      }
+      // Q5 出席狀態變動時，Q10 的顯示條件也要一併重新檢查
+      updateQ10Detail();
+    }
+
+    q5Radios.forEach(function (r) { r.addEventListener('change', updateQ5Detail); });
+    if (q6) q6.addEventListener('input', updateQ10Detail);
+    updateQ5Detail();
+
+    var q12Radios = document.querySelectorAll('input[name="q12_invitation"]');
+    var q12Detail = document.getElementById('q12-detail');
+    var q13 = document.getElementById('q13');
+
+    function updateQ12Detail() {
+      var checked = document.querySelector('input[name="q12_invitation"]:checked');
+      var needsAddress = checked && checked.value === '想收到紙本喜帖，請寄給我';
+      if (!q12Detail) return;
+      q12Detail.hidden = !needsAddress;
+      if (q13) q13.required = !!needsAddress;
+      if (!needsAddress) clearFieldError('q13');
+    }
+
+    q12Radios.forEach(function (r) { r.addEventListener('change', updateQ12Detail); });
+    updateQ12Detail();
   }
 
   // ------------------------------------------------------------
@@ -267,10 +289,10 @@ const FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbycfZCNFJV1gv1jiW
     }
 
     // 必填欄位（依 field id 對應：text/number → input id；radio 群組 → name）
-    // 註：q12（手機號碼）另有獨立格式驗證區塊，不放進這個陣列
+    // 註：q14（手機號碼）另有獨立格式驗證區塊，不放進這個陣列
     var requiredTextFields = ['q1'];
-    var requiredNumberFields = ['q5', 'q6']; // 是否必填由 initConditionalFields 動態切換 .required
-    var requiredRadioGroups = ['q2_relation', 'q3_ceremony', 'q4_banquet', 'q8_diet', 'q10_invitation'];
+    var requiredNumberFields = ['q6', 'q7']; // 是否必填由 initConditionalFields 動態切換 .required
+    var requiredRadioGroups = ['q2_relation', 'q3_connection', 'q4_ceremony', 'q5_banquet', 'q9_diet_self', 'q10_diet_guest', 'q12_invitation', 'q16_parking'];
 
     function validate() {
       var firstInvalid = null;
@@ -288,51 +310,55 @@ const FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbycfZCNFJV1gv1jiW
         }
       });
 
-      // Q11（條件必填 + 寬鬆長度檢查，地址寫法差異大，不套嚴格 regex）
-      var q11 = document.getElementById('q11');
-      if (q11 && q11.required) {
-        clearFieldError('q11');
-        var q11Value = q11.value.trim();
-        if (!q11Value) {
-          showFieldError('q11');
-          isValid = false;
-          firstInvalid = firstInvalid || q11;
-        } else if (q11Value.length < 6) {
-          showFieldError('q11', '地址似乎不完整，請確認街道與門牌號都已填寫');
-          isValid = false;
-          firstInvalid = firstInvalid || q11;
-        }
-      }
-
-      // Q12 手機號碼（必填 + 台灣手機格式檢查，去除空白/連字號後比對）
-      var q12 = document.getElementById('q12');
-      if (q12) {
-        clearFieldError('q12');
-        var q12Value = q12.value.trim();
-        if (!q12Value) {
-          showFieldError('q12');
-          isValid = false;
-          firstInvalid = firstInvalid || q12;
-        } else if (!/^09\d{8}$/.test(q12Value.replace(/[\s-]/g, ''))) {
-          showFieldError('q12', '手機號碼格式不正確，請確認（例如 0912345678）');
-          isValid = false;
-          firstInvalid = firstInvalid || q12;
-        }
-      }
-
-      // Q13 Email 或 LINE ID（選填；只有含 @ 才視為 Email 並檢查格式，避免誤擋 LINE ID）
+      // Q13（條件必填 + 寬鬆長度檢查，地址寫法差異大，不套嚴格 regex）
       var q13 = document.getElementById('q13');
-      if (q13) {
+      if (q13 && q13.required) {
         clearFieldError('q13');
         var q13Value = q13.value.trim();
-        if (q13Value.indexOf('@') !== -1 && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(q13Value)) {
-          showFieldError('q13', 'Email 格式看起來不完整，請確認（若要留 LINE ID 可直接輸入 ID，不需要 @ 符號）');
+        if (!q13Value) {
+          showFieldError('q13');
+          isValid = false;
+          firstInvalid = firstInvalid || q13;
+        } else if (q13Value.length < 6) {
+          showFieldError('q13', '地址似乎不完整，請確認街道與門牌號都已填寫');
           isValid = false;
           firstInvalid = firstInvalid || q13;
         }
       }
 
-      // 數字欄位（Q5/Q6，條件必填 + 需為 >=0 整數）
+      // Q14 手機號碼（必填 + 台灣手機格式檢查，去除空白/連字號後比對）
+      var q14 = document.getElementById('q14');
+      if (q14) {
+        clearFieldError('q14');
+        var q14Value = q14.value.trim();
+        if (!q14Value) {
+          showFieldError('q14');
+          isValid = false;
+          firstInvalid = firstInvalid || q14;
+        } else if (!/^09\d{8}$/.test(q14Value.replace(/[\s-]/g, ''))) {
+          showFieldError('q14', '手機號碼格式不正確，請確認（例如 0912345678）');
+          isValid = false;
+          firstInvalid = firstInvalid || q14;
+        }
+      }
+
+      // Q15 Email 或 LINE ID（必填；只有含 @ 才視為 Email 並檢查格式，避免誤擋 LINE ID）
+      var q15 = document.getElementById('q15');
+      if (q15) {
+        clearFieldError('q15');
+        var q15Value = q15.value.trim();
+        if (!q15Value) {
+          showFieldError('q15');
+          isValid = false;
+          firstInvalid = firstInvalid || q15;
+        } else if (q15Value.indexOf('@') !== -1 && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(q15Value)) {
+          showFieldError('q15', 'Email 格式看起來不完整，請確認（若要留 LINE ID 可直接輸入 ID，不需要 @ 符號）');
+          isValid = false;
+          firstInvalid = firstInvalid || q15;
+        }
+      }
+
+      // 數字欄位（Q6/Q7，條件必填 + 需為 >=0 整數）
       requiredNumberFields.forEach(function (id) {
         var input = document.getElementById(id);
         if (!input) return;
@@ -347,7 +373,7 @@ const FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbycfZCNFJV1gv1jiW
         }
       });
 
-      // 單選必填群組（Q8 是條件必填，DOM 上 .required 為 false 時代表目前不適用，跳過）
+      // 單選必填群組（Q9/Q10 是條件必填，DOM 上 .required 為 false 時代表目前不適用，跳過）
       requiredRadioGroups.forEach(function (name) {
         var radios = document.querySelectorAll('input[name="' + name + '"]');
         if (!radios.length || !radios[0].required) return;
@@ -442,9 +468,9 @@ const FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbycfZCNFJV1gv1jiW
       var fd = new FormData(formEl);
       var obj = {};
       fd.forEach(function (value, key) { obj[key] = value; });
-      // Q12 手機號碼正規化：去除空白與連字號，只影響送出值，不改動輸入框顯示內容
-      if (obj.q12_phone) {
-        obj.q12_phone = String(obj.q12_phone).replace(/[\s-]/g, '');
+      // Q14 手機號碼正規化：去除空白與連字號，只影響送出值，不改動輸入框顯示內容
+      if (obj.q14_phone) {
+        obj.q14_phone = String(obj.q14_phone).replace(/[\s-]/g, '');
       }
       obj.submittedAt = new Date().toISOString();
       return obj;
