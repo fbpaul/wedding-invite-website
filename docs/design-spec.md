@@ -61,6 +61,12 @@
   /* 裝飾金（僅細線 / 圖形，禁用於文字；與紫色系仍為經典配色） */
   --color-gold:        #C9A96A;
 
+  /* Hero／頁尾專用深色底（全站唯二的深色區塊，其餘區塊維持淺底以利填表）
+     背景直接沿用 --color-primary（與導覽列「回覆出席」按鈕同色），確保主色調整時兩邊自動同步 */
+  --color-hero-bg:        var(--color-primary);
+  --color-hero-text:      #FAF7FB; /* 深底主文字 */
+  --color-hero-text-soft: #E4D7EA; /* 深底次要文字・淺霧紫（比主文字暗一階，仍達 AA） */
+
   /* 界線 */
   --color-line:        #DED1E3; /* 分隔線、輸入框邊框 */
 
@@ -91,10 +97,13 @@
 | `--color-error` `#B23A48` | `--color-bg` `#FAF7FB` | 5.5 : 1 | AA ✓ | 錯誤訊息文字 |
 | `--color-success` `#357052` | `--color-bg` `#FAF7FB` | 5.5 : 1 | AA ✓ | 成功訊息文字 |
 | `--color-sage-dark` `#6F5F79` | `--color-bg` `#FAF7FB` | 5.5 : 1 | AA ✓ | 若霧紫需作正文，用此深色 |
-| `#C6BBD1`（頁尾次要文字，硬編碼於 `.site-footer__date`/`.site-footer__copyright`） | `--color-ink`（頁尾底色）`#352F3D` | 7.0 : 1 | AAA ✓ | 深底次要文字 |
+| `--color-hero-text` `#FAF7FB` | `--color-hero-bg`（= `--color-primary`）`#6D4C7D` | 6.6 : 1 | AA ✓ | Hero／頁尾正文（深底） |
+| `--color-hero-text-soft` `#E4D7EA` | `--color-hero-bg` `#6D4C7D` | 5.1 : 1 | AA ✓ | Hero／頁尾次要文字 |
+| `--color-gold` `#C9A96A` | `--color-hero-bg` `#6D4C7D` | 3.1 : 1 | AA(大字) ✓ | 僅 Hero 的 `&`（`--fs-display` 0.7em，≥28px 大字級）可用金色；一般文字級一律禁用（見下） |
+| `#E4D7EA`（頁尾次要文字，硬編碼於 `.site-footer__date`/`.site-footer__copyright`） | `--color-hero-bg`（頁尾底色）`#6D4C7D` | 5.1 : 1 | AA ✓ | 深底次要文字 |
 
 **禁用組合（會不合格，實作勿犯）**：
-- `--color-gold` `#C9A96A` 對背景僅 ~2.1:1 → **只能作細線/圖形，禁止當任何文字色**。
+- `--color-gold` `#C9A96A` 對淺底（`--color-bg` 等）僅 ~2.1:1 → **在淺底只能作細線/圖形，禁止當文字色**；對 `--color-hero-bg` 深底僅 3.1:1（見 2.2），**只夠大字級**（Hero 的 `&`，≥28px），一般字級（含頁尾、婚後訊息）一律不可用金色文字，改用 `--color-hero-text`。
 - `--color-sage` `#9A8AA3` 對背景僅 ~3.0:1 → 僅可用於**裝飾線條或 ≥24px 的大字級標籤**，禁止當正文。正文要用輔色請改用 `--color-sage-dark`。
 
 ---
@@ -368,16 +377,19 @@ JS 中也需守門：`const reduce = matchMedia('(prefers-reduced-motion: reduce
 **內容**：主標姓名「蔡梵志 & 彭湘晴」／日期「2027 . 03 . 27（六）」／地點一行「台中 · 蘭克斯特 Lancaster House」／倒數計時（可選）。
 **目標**：手機一開就驚豔——大量留白 + 大字襯線姓名 + 角落花草線描。
 
+**背景（2026-08 改版）**：全站唯二的深色區塊之一（另一個是頁尾），`--color-hero-bg` 直接沿用 `--color-primary` `#6D4C7D`（與導覽列「回覆出席」按鈕同色），疊一層極淡的頂部光暈 `radial-gradient(ellipse 120% 70% at 50% 10%, rgba(255,255,255,.07) 0%, transparent 60%)` 增加層次。**這個深色只用在 Hero 與頁尾**，RSVP 表單與其餘內容區塊維持淺底，避免深色背景干擾填表閱讀。
+
 版式結構（由上到下，置中）：
-1. eyebrow：`THE WEDDING OF`（latin, uppercase, `--color-primary`, 字距 0.28em）
-2. 主標姓名：`蔡梵志　&　彭湘晴`
-   - `&` 用 `--font-latin` italic、`--color-primary`，比中文字略大。
+1. eyebrow：`THE WEDDING OF`（latin, uppercase, `--color-hero-text-soft`, 字距 0.28em）
+2. 主標姓名：`蔡梵志　&　彭湘晴`（`--color-hero-text`）
+   - `&` 用 `--font-latin` italic、`--color-gold`（深紫底上金色點綴，比中文字略大）。
    - 手機建議斷成三行：`蔡梵志` / `&` / `彭湘晴`（`&` 獨立一行置中）；桌機同一行。
 3. 分隔飾線（6.1）
-4. 日期：`2027 . 03 . 27` 用 `--font-latin` 500，字距 0.16em；後接 `（週六）午宴` 用 `--fs-small` `--color-ink-soft`。
-5. 地點行：`台中 · 蘭克斯特 Lancaster House`（`--fs-lead`, `--color-ink-soft`）。
-6. 倒數計時（可選，見 8.1.1）。
-7. 向下捲動提示：細箭頭 SVG + `--color-ink-soft`，`opacity` 呼吸動畫（reduced-motion 時停）。
+4. 日期：`2027 . 03 . 27` 用 `--font-latin` 500，字距 0.16em，`--color-hero-text`；後接 `（週六）午宴` 用 `--fs-small` `--color-hero-text-soft`。
+5. 地點行：`台中 · 蘭克斯特 Lancaster House`（`--fs-lead`, `--color-hero-text-soft`）。
+6. 倒數計時（可選，見 8.1.1）——數字卡片本身維持淺底（`--color-bg-deep`）+ 深色數字，在深紫底上呈現「淺色卡片」效果，不需另外調色。
+7. 向下捲動提示：細箭頭 SVG + `--color-hero-text-soft`，`opacity` 呼吸動畫（reduced-motion 時停）。
+8. 婚後訊息（倒數歸零後顯示）：`--color-hero-text`（一般字級，金色對比不足見 2.2，不可用金色）。
 
 **手機版（375px）**：
 - 全區至少 `100svh` 高、內容垂直置中，左右 `--gutter`。
@@ -523,9 +535,9 @@ JS 中也需守門：`const reduce = matchMedia('(prefers-reduced-motion: reduce
 
 ### 8.7 ⑦ 頁尾（含 LINE bot 預留位）
 
-深色收尾，與全站淺底形成優雅對比。
+深色收尾，與全站淺底形成優雅對比；2026-08 改版後與 Hero 共用同一個深底色（= `--color-primary`），首尾呼應成一組「深色書擋」，中間內容區塊維持淺底。
 
-- **底色**：`--color-ink` `#352F3D`；文字 `--color-bg` `#FAF7FB`（此組合對比 12.2:1 ✓，等同正文倒置）；次要文字用 `#C6BBD1`（冷淺紫灰，對深底 7.0:1）。
+- **底色**：`--color-hero-bg` `#6D4C7D`；文字 `--color-bg` `#FAF7FB`（此組合對比 6.6:1 ✓）；次要文字用 `#E4D7EA`（淺霧紫，對深底 5.1:1）。
 - **內容**（置中，`--space-3xl` 上下內距）：
   1. monogram「蔡 & 彭」（serif，28px）
   2. 日期「2027.03.27　台中 蘭克斯特 Lancaster House」（`--fs-small`）
