@@ -213,6 +213,18 @@ section { padding-block: var(--space-2xl); position: relative; }
 .site-nav__brand { font: 600 18px/1 var(--font-serif); color: var(--color-ink); letter-spacing: 0.05em; }
 .site-nav__links { display: none; gap: var(--space-lg); letter-spacing: 0.1em; font-size: var(--fs-small); }
 .site-nav__links a { color: var(--color-ink-soft); }
+
+/* 懸浮 CTA：滑過 Hero 後浮現，捲到 RSVP 表單本身時隱藏（避免擋住表單），JS 用 initFloatingCta() 控制 .is-visible */
+.floating-cta {
+  position: fixed; left: 50%; bottom: var(--space-md); z-index: 60;
+  transform: translateX(-50%) translateY(16px);
+  opacity: 0; pointer-events: none; box-shadow: var(--shadow-md);
+  transition: opacity .3s ease, transform .3s ease;
+}
+.floating-cta.is-visible { opacity: 1; pointer-events: auto; transform: translateX(-50%) translateY(0); }
+@media (prefers-reduced-motion: reduce) {
+  .floating-cta { transition: opacity .15s linear; transform: translateX(-50%); }
+}
 @media (min-width: 900px) {
   .site-nav__links { display: flex; }
 }
@@ -307,6 +319,13 @@ section { padding-block: var(--space-2xl); position: relative; }
 /* ============================================================
    ③ 時間安排 Timeline
    ============================================================ */
+.timeline-layout { display: grid; gap: var(--space-xl); }
+
+.timeline-venue { display: grid; gap: var(--space-md); max-width: 420px; margin-inline: auto; }
+.timeline-venue__item { border-radius: var(--radius-lg); overflow: hidden; }
+.timeline-venue__item img { display: block; width: 100%; aspect-ratio: 4/3; object-fit: cover; }
+.timeline-venue__item figcaption { margin-top: var(--space-2xs); text-align: center; font-size: var(--fs-small); color: var(--color-ink-soft); }
+
 .timeline { position: relative; max-width: 760px; margin-inline: auto; padding-left: var(--space-lg); }
 .timeline::before { content: ""; position: absolute; left: 0; top: 6px; bottom: 6px; width: 1px; background: var(--color-line); }
 .timeline__group { margin-bottom: var(--space-xl); }
@@ -320,6 +339,9 @@ section { padding-block: var(--space-2xl); position: relative; }
 .timeline__desc { margin-top: 4px; font-size: var(--fs-small); color: var(--color-ink-soft); }
 
 @media (min-width: 900px) {
+  .timeline-layout { grid-template-columns: 1.3fr 1fr; align-items: center; gap: var(--space-xl); }
+  .timeline-venue { max-width: none; }
+
   .timeline { padding-left: 0; }
   .timeline::before { left: 50%; transform: translateX(-50%); }
   .timeline__group-title { text-align: center; }

@@ -49,6 +49,7 @@ const FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbycfZCNFJV1gv1jiW
   document.addEventListener('DOMContentLoaded', function () {
     initRevealAnimations();
     initNavScroll();
+    initFloatingCta();
     initSmoothAnchors();
     initCountdown();
     initConditionalFields();
@@ -95,6 +96,38 @@ const FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbycfZCNFJV1gv1jiW
     };
     toggle();
     window.addEventListener('scroll', toggle, { passive: true });
+  }
+
+  // ------------------------------------------------------------
+  // 懸浮 CTA：滑過 Hero 後浮現；捲到 RSVP 表單本身時隱藏（避免擋住表單）
+  // ------------------------------------------------------------
+  function initFloatingCta() {
+    var cta = document.getElementById('floatingCta');
+    var hero = document.getElementById('hero');
+    var rsvp = document.getElementById('rsvp');
+    if (!cta || !hero || !rsvp) return;
+
+    var pastHero = false;
+    var rsvpVisible = false;
+
+    function update() {
+      cta.classList.toggle('is-visible', pastHero && !rsvpVisible);
+    }
+
+    var checkHero = function () {
+      pastHero = hero.getBoundingClientRect().bottom <= 56;
+      update();
+    };
+    checkHero();
+    window.addEventListener('scroll', checkHero, { passive: true });
+
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) { rsvpVisible = entry.isIntersecting; });
+        update();
+      }, { threshold: 0.15 });
+      io.observe(rsvp);
+    }
   }
 
   // ------------------------------------------------------------
