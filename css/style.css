@@ -173,6 +173,7 @@ section { padding-block: var(--space-2xl); position: relative; }
 .btn--text { min-height: auto; padding: 4px 0; color: var(--color-primary); border-radius: 0; font-size: var(--fs-small); letter-spacing: 0.02em; }
 
 .btn--sm { min-height: 40px; padding: 0 20px; }
+.btn--lg { min-height: 56px; padding: 0 44px; font-size: 17px; }
 .btn--full { width: 100%; }
 .btn:disabled, .btn[aria-disabled="true"] { opacity: .6; pointer-events: none; }
 
@@ -246,8 +247,12 @@ section { padding-block: var(--space-2xl); position: relative; }
   opacity: 0; animation: hero-fade .7s ease .3s forwards; }
 @keyframes hero-fade { to { opacity: 1; } }
 
+/* 首屏主要 CTA：手機版也要一眼看到，放大、置中（Hero 本身即置中） */
+.hero__cta { display: inline-flex; margin-top: var(--space-lg);
+  opacity: 0; animation: hero-fade .7s ease .45s forwards; }
+
 @media (prefers-reduced-motion: reduce) {
-  .hero__name, .hero__divider, .hero__date, .hero__location { animation: none !important; opacity: 1 !important; transform: none !important; }
+  .hero__name, .hero__divider, .hero__date, .hero__location, .hero__cta { animation: none !important; opacity: 1 !important; transform: none !important; }
 }
 
 .hero__countdown { display: none; margin-top: var(--space-xl); gap: var(--space-sm); justify-content: center; }
@@ -285,10 +290,18 @@ section { padding-block: var(--space-2xl); position: relative; }
 .gallery-item:hover .ph { transform: scale(1.04); }
 .gallery-cap { margin-top: var(--space-2xs); text-align: center; font-size: var(--fs-small); color: var(--color-ink-soft); }
 
+/* 實際照片（取代 .ph placeholder 時使用）：aspect-ratio 比照上方 nth-child 規則 */
+.gallery-item__img { display: block; width: 100%; height: 100%; object-fit: cover;
+  border-radius: var(--radius-lg); transition: transform .6s ease; aspect-ratio: 3/4; }
+.gallery-item:nth-child(1) .gallery-item__img { aspect-ratio: 4/5; }
+.gallery-item:nth-child(3) .gallery-item__img { aspect-ratio: 1/1; }
+.gallery-item:hover .gallery-item__img { transform: scale(1.04); }
+
 @media (min-width: 900px) {
   .gallery-grid { grid-template-columns: repeat(3, 1fr); }
   .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
   .gallery-item:nth-child(1) .ph { aspect-ratio: auto; height: 100%; }
+  .gallery-item:nth-child(1) .gallery-item__img { aspect-ratio: auto; height: 100%; }
 }
 
 /* ============================================================
