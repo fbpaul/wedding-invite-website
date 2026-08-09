@@ -259,9 +259,17 @@ section { padding-block: var(--space-2xl); position: relative; }
   opacity: 0; animation: hero-fade .7s ease .3s forwards; }
 @keyframes hero-fade { to { opacity: 1; } }
 
-/* 首屏主要 CTA：手機版也要一眼看到，放大、置中（Hero 本身即置中） */
-.hero__cta { display: inline-flex; margin-top: var(--space-lg);
-  opacity: 0; animation: hero-fade .7s ease .45s forwards; }
+/* 首屏主要 CTA：手機版也要一眼看到，放大、置中（Hero 本身即置中）。
+   Hero 背景 = --color-primary，若沿用 .btn--primary 同色會整個融進背景，
+   這裡改成淺底＋主色字，跟深色背景形成強對比，並加陰影營造浮出效果。 */
+.hero__cta {
+  display: inline-flex; margin-top: var(--space-lg);
+  opacity: 0; animation: hero-fade .7s ease .45s forwards;
+  background: var(--color-white); color: var(--color-primary);
+  box-shadow: 0 10px 28px rgba(0,0,0,.22), 0 3px 10px rgba(0,0,0,.14);
+}
+.hero__cta:hover { background: var(--color-hero-text); transform: translateY(-2px);
+  box-shadow: 0 14px 32px rgba(0,0,0,.26), 0 4px 12px rgba(0,0,0,.16); }
 
 @media (prefers-reduced-motion: reduce) {
   .hero__name, .hero__divider, .hero__date, .hero__location, .hero__cta { animation: none !important; opacity: 1 !important; transform: none !important; }
@@ -319,17 +327,16 @@ section { padding-block: var(--space-2xl); position: relative; }
 /* ============================================================
    ③ 時間安排 Timeline
    ============================================================ */
-.timeline-layout { display: grid; gap: var(--space-xl); }
+/* 每排「文字＋照片」交錯排列：奇數排文字在左，偶數排（--reverse）用 order 交換視覺順序（僅桌機） */
+.timeline-rows { display: grid; gap: var(--space-2xl); max-width: 920px; margin-inline: auto; }
+.timeline-row { display: grid; gap: var(--space-lg); align-items: center; }
 
-.timeline-venue { display: grid; gap: var(--space-md); max-width: 420px; margin-inline: auto; }
-.timeline-venue__item { border-radius: var(--radius-lg); overflow: hidden; }
-.timeline-venue__item img { display: block; width: 100%; aspect-ratio: 4/3; object-fit: cover; }
-.timeline-venue__item figcaption { margin-top: var(--space-2xs); text-align: center; font-size: var(--fs-small); color: var(--color-ink-soft); }
+.timeline-row__img { border-radius: var(--radius-lg); overflow: hidden; }
+.timeline-row__img img { display: block; width: 100%; aspect-ratio: 4/3; object-fit: cover; }
+.timeline-row__img figcaption { margin-top: var(--space-2xs); text-align: center; font-size: var(--fs-small); color: var(--color-ink-soft); }
 
-.timeline { position: relative; max-width: 760px; margin-inline: auto; padding-left: var(--space-lg); }
+.timeline { position: relative; padding-left: var(--space-lg); }
 .timeline::before { content: ""; position: absolute; left: 0; top: 6px; bottom: 6px; width: 1px; background: var(--color-line); }
-.timeline__group { margin-bottom: var(--space-xl); }
-.timeline__group:last-child { margin-bottom: 0; }
 .timeline__group-title { font-size: var(--fs-h2); margin-bottom: var(--space-md); }
 .timeline__item { position: relative; padding: var(--space-md) 0 var(--space-md) var(--space-lg); }
 .timeline__node { position: absolute; left: calc(var(--space-lg) * -1); top: var(--space-md); width: 12px; height: 12px;
@@ -339,18 +346,8 @@ section { padding-block: var(--space-2xl); position: relative; }
 .timeline__desc { margin-top: 4px; font-size: var(--fs-small); color: var(--color-ink-soft); }
 
 @media (min-width: 900px) {
-  .timeline-layout { grid-template-columns: 1.3fr 1fr; align-items: center; gap: var(--space-xl); }
-  .timeline-venue { max-width: none; }
-
-  .timeline { padding-left: 0; }
-  .timeline::before { left: 50%; transform: translateX(-50%); }
-  .timeline__group-title { text-align: center; }
-  .timeline__item { width: calc(50% - 40px); padding: var(--space-md) var(--space-lg); }
-  .timeline__node { left: auto; transform: none; }
-  .timeline__item:nth-child(odd) { margin-right: auto; text-align: right; }
-  .timeline__item:nth-child(odd) .timeline__node { right: -46px; left: auto; }
-  .timeline__item:nth-child(even) { margin-left: auto; text-align: left; }
-  .timeline__item:nth-child(even) .timeline__node { left: -46px; }
+  .timeline-row { grid-template-columns: 1fr 1fr; gap: var(--space-xl); }
+  .timeline-row--reverse .timeline { order: 2; }
   .timeline__time { font-size: 32px; }
 }
 

@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="css/style.css?v=5">
+<link rel="stylesheet" href="css/style.css?v=6">
 </head>
 <body>
 <a class="skip-link" href="#main">跳到主要內容</a>
@@ -145,48 +145,52 @@
       <p class="section-head__lead">儀式與婚宴時間分開，歡迎您全程參與</p>
     </div>
 
-    <div class="timeline-layout">
-      <div class="timeline">
-        <div class="timeline__group reveal" style="--i:0">
-          <h3 class="timeline__group-title">迎賓・儀式</h3>
-          <div class="timeline__item">
-            <span class="timeline__node" aria-hidden="true"></span>
-            <span class="timeline__time">10:00</span>
-            <h4 class="timeline__title">賓客入場</h4>
-            <p class="timeline__desc">請提前抵達會場，稍作休息、入座</p>
-          </div>
-          <div class="timeline__item">
-            <span class="timeline__node" aria-hidden="true"></span>
-            <span class="timeline__time">10:30</span>
-            <h4 class="timeline__title">婚禮儀式準時開始</h4>
-            <p class="timeline__desc">證婚儀式將準時開始，敬請提早入座</p>
-          </div>
-        </div>
-
-        <div class="timeline__group reveal" style="--i:1">
-          <h3 class="timeline__group-title">婚宴・午宴</h3>
-          <div class="timeline__item">
-            <span class="timeline__node" aria-hidden="true"></span>
-            <span class="timeline__time">11:30</span>
-            <h4 class="timeline__title">賓客入席</h4>
-            <p class="timeline__desc">請依桌次入座，稍候片刻</p>
-          </div>
-          <div class="timeline__item">
-            <span class="timeline__node" aria-hidden="true"></span>
-            <span class="timeline__time">12:10</span>
-            <h4 class="timeline__title">婚宴準時開席</h4>
-            <p class="timeline__desc">婚宴將準時開席，感謝您的準時蒞臨</p>
+    <div class="timeline-rows">
+      <!-- 迎賓・儀式：文字在左、照片在右（桌機） -->
+      <div class="timeline-row reveal" style="--i:0">
+        <div class="timeline">
+          <div class="timeline__group">
+            <h3 class="timeline__group-title">迎賓・儀式</h3>
+            <div class="timeline__item">
+              <span class="timeline__node" aria-hidden="true"></span>
+              <span class="timeline__time">10:00</span>
+              <h4 class="timeline__title">賓客入場</h4>
+              <p class="timeline__desc">請提前抵達會場，稍作休息、入座</p>
+            </div>
+            <div class="timeline__item">
+              <span class="timeline__node" aria-hidden="true"></span>
+              <span class="timeline__time">10:30</span>
+              <h4 class="timeline__title">婚禮儀式準時開始</h4>
+              <p class="timeline__desc">證婚儀式將準時開始，敬請提早入座</p>
+            </div>
           </div>
         </div>
-      </div>
-
-      <!-- 場地示意圖：呼應左側儀式／婚宴兩個時段 -->
-      <div class="timeline-venue">
-        <figure class="timeline-venue__item reveal" style="--i:2">
+        <figure class="timeline-row__img">
           <img src="assets/venue/ceremony-hall.jpg" alt="蘭克斯特證婚儀式堂" loading="lazy">
           <figcaption>證婚儀式堂</figcaption>
         </figure>
-        <figure class="timeline-venue__item reveal" style="--i:3">
+      </div>
+
+      <!-- 婚宴・午宴：照片在左、文字在右（桌機），與上一排交錯 -->
+      <div class="timeline-row timeline-row--reverse reveal" style="--i:1">
+        <div class="timeline">
+          <div class="timeline__group">
+            <h3 class="timeline__group-title">婚宴・午宴</h3>
+            <div class="timeline__item">
+              <span class="timeline__node" aria-hidden="true"></span>
+              <span class="timeline__time">11:30</span>
+              <h4 class="timeline__title">賓客入席</h4>
+              <p class="timeline__desc">請依桌次入座，稍候片刻</p>
+            </div>
+            <div class="timeline__item">
+              <span class="timeline__node" aria-hidden="true"></span>
+              <span class="timeline__time">12:10</span>
+              <h4 class="timeline__title">婚宴準時開席</h4>
+              <p class="timeline__desc">婚宴將準時開席，感謝您的準時蒞臨</p>
+            </div>
+          </div>
+        </div>
+        <figure class="timeline-row__img">
           <img src="assets/venue/banquet-hall.jpg" alt="蘭克斯特宴會廳" loading="lazy">
           <figcaption>宴會廳</figcaption>
         </figure>
