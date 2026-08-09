@@ -295,8 +295,9 @@ section { padding-block: var(--space-2xl); position: relative; }
 /* ============================================================
    ② 婚紗照 Gallery
    ============================================================ */
-.gallery-grid { display: grid; gap: var(--space-md); }
+.gallery-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-sm); }
 .gallery-item { position: relative; overflow: hidden; border-radius: var(--radius-lg); }
+.gallery-item:nth-child(1) { grid-column: span 2; }
 .gallery-item:nth-child(1) .ph { aspect-ratio: 4/5; }
 .gallery-item:nth-child(n+2) .ph { aspect-ratio: 3/4; }
 .gallery-item:nth-child(3) .ph { aspect-ratio: 1/1; }
@@ -327,9 +328,11 @@ section { padding-block: var(--space-2xl); position: relative; }
 /* ============================================================
    ③ 時間安排 Timeline
    ============================================================ */
-/* 每排「文字＋照片」交錯排列：奇數排文字在左，偶數排（--reverse）用 order 交換視覺順序（僅桌機） */
-.timeline-rows { display: grid; gap: var(--space-2xl); max-width: 920px; margin-inline: auto; }
-.timeline-row { display: grid; gap: var(--space-lg); align-items: center; }
+/* 每排「文字＋照片」交錯排列：奇數排文字在左，偶數排（--reverse）用 order 交換視覺順序；手機與桌機皆為雙欄 */
+.timeline-rows { display: grid; gap: var(--space-xl); max-width: 920px; margin-inline: auto; }
+.timeline-row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-sm); align-items: center; }
+.timeline-row--reverse .timeline { order: 2; }
+.timeline-row .timeline { min-width: 0; }
 
 .timeline-row__img { border-radius: var(--radius-lg); overflow: hidden; }
 .timeline-row__img img { display: block; width: 100%; aspect-ratio: 4/3; object-fit: cover; }
@@ -346,8 +349,7 @@ section { padding-block: var(--space-2xl); position: relative; }
 .timeline__desc { margin-top: 4px; font-size: var(--fs-small); color: var(--color-ink-soft); }
 
 @media (min-width: 900px) {
-  .timeline-row { grid-template-columns: 1fr 1fr; gap: var(--space-xl); }
-  .timeline-row--reverse .timeline { order: 2; }
+  .timeline-row { gap: var(--space-xl); }
   .timeline__time { font-size: 32px; }
 }
 
