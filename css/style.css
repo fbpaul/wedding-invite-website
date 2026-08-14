@@ -94,6 +94,7 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
+  text-wrap: pretty; /* 瀏覽器原生避免斷行孤字（單字不成行），支援度不足時自動忽略 */
 }
 h1, h2, h3 { font-family: var(--font-serif); font-weight: 600; line-height: 1.25; letter-spacing: 0.01em; }
 h1 { font-size: var(--fs-display); }
