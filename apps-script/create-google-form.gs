@@ -30,7 +30,7 @@ function createWeddingRSVPForm() {
   form.setDescription(
     '誠摯邀請您參加我們的婚禮 🤍\n' +
     '2027/3/27（六）午宴，台中 蘭克斯特 Lancaster House（臺中市北屯區崇德路二段347號）。\n' +
-    '儀式 10:00 入場、10:30 準時開始；婚宴 11:30 入場、12:10 準時開席。\n' +
+    '儀式 10:15 入場、10:30 證婚準時開始；婚宴 11:30 入場、12:10 準時開席。\n' +
     '請於 2027/2/28 前回覆，讓我們為您預留座位，謝謝！\n\n' +
     '※ 若您已在婚禮邀請網站上填過 RSVP，請不用重複填寫本表單。'
   );
@@ -75,7 +75,7 @@ function createWeddingRSVPForm() {
     .requireNumberGreaterThanOrEqualTo(0)
     .build();
   form.addTextItem()
-    .setTitle('Q6｜出席婚宴的大人人數（不含兒童）')
+    .setTitle('Q6｜出席婚宴的大人人數（含6歲以上兒童）')
     .setHelpText('僅 Q5 選擇出席婚宴者需填寫；若不出席婚宴可留空')
     .setValidation(q6Validation)
     .setRequired(false);

@@ -149,14 +149,14 @@ const FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbycfZCNFJV1gv1jiW
   }
 
   // ------------------------------------------------------------
-  // 倒數計時（目標：2027-03-27T10:00:00+08:00，儀式入場時間）
+  // 倒數計時（目標：2027-03-27T10:15:00+08:00，儀式入場時間）
   // ------------------------------------------------------------
   function initCountdown() {
     var el = document.getElementById('countdown');
     var marriedMsg = document.getElementById('married-msg');
     if (!el) return;
 
-    var target = new Date('2027-03-27T10:00:00+08:00').getTime();
+    var target = new Date('2027-03-27T10:15:00+08:00').getTime();
 
     var dEl = document.getElementById('cd-days');
     var hEl = document.getElementById('cd-hours');
