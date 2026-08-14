@@ -148,7 +148,7 @@ function test_doPost() {
         q9_diet_self: '葷食皆可',
         q10_diet_guest: '葷食皆可',
         q11_allergy: '',
-        q12_invitation: '不需要，我都知道婚禮資訊了',
+        q12_invitation: '不需要，我都知道婚禮資訊',
         q13_address: '',
         q14_phone: '0912345678',
         q15_contact: 'test@example.com',

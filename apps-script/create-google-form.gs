@@ -120,7 +120,7 @@ function createWeddingRSVPForm() {
   // Q12
   form.addMultipleChoiceItem()
     .setTitle('Q12｜喜帖需要寄送嗎？')
-    .setChoiceValues(['想收到紙本喜帖，請寄給我', '請寄電子喜帖給我（環保愛地球）', '不需要，我都知道婚禮資訊了'])
+    .setChoiceValues(['想收到紙本喜帖，請寄給我', '請寄電子喜帖給我（環保愛地球）', '不需要，我都知道婚禮資訊'])
     .setRequired(true);
 
   // Q13（簡化：非必填，說明文字取代條件顯示）

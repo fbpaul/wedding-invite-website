@@ -176,7 +176,7 @@
             <div class="timeline__item">
               <span class="timeline__node" aria-hidden="true"></span>
               <span class="timeline__time">12:10</span>
-              <h4 class="timeline__title">婚宴準時開席</h4>
+              <h4 class="timeline__title">婚宴準時開席囉</h4>
               <p class="timeline__desc">婚宴將準時開席，感謝您的準時蒞臨</p>
             </div>
           </div>
@@ -247,7 +247,7 @@
 
         <!-- Q1 姓名 -->
         <div class="field" id="field-q1">
-          <label class="field__label" for="q1">Q1｜可以留下您的大名嗎？🌸<span class="req">*</span></label>
+          <label class="field__label" for="q1">Q1｜可以留下您的大名嗎？🌸⁠<span class="req">*</span></label>
           <input class="input" type="text" id="q1" name="q1_name" required
                  aria-describedby="q1-hint q1-error" placeholder="請輸入您的全名">
           <p class="field__hint" id="q1-hint">請填寫全名唷，不然我們會認不出是哪位貴賓大駕光臨～</p>
@@ -256,7 +256,7 @@
 
         <!-- Q2 賓客身分 -->
         <fieldset class="field" id="field-q2">
-          <legend class="field__label">Q2｜請問您是新郎／新娘哪一邊的親友呢？<span class="req">*</span></legend>
+          <legend class="field__label">Q2｜請問您是新郎／新娘哪一邊的親友呢？⁠<span class="req">*</span></legend>
           <div class="choice-group" role="radiogroup" aria-describedby="q2-error">
             <label class="choice" data-type="radio">
               <input type="radio" name="q2_relation" value="男方（新郎）親友" required>
@@ -279,7 +279,7 @@
 
         <!-- Q3 與新人的關係（全新題目） -->
         <fieldset class="field" id="field-q3">
-          <legend class="field__label">Q3｜請問您與新人的關係是？<span class="req">*</span></legend>
+          <legend class="field__label">Q3｜請問您與新人的關係是？⁠<span class="req">*</span></legend>
           <div class="choice-group" role="radiogroup" aria-describedby="q3-error">
             <label class="choice" data-type="radio">
               <input type="radio" name="q3_connection" value="朋友" required>
@@ -312,7 +312,7 @@
 
         <!-- Q4 是否參加證婚儀式 -->
         <fieldset class="field" id="field-q4">
-          <legend class="field__label">Q4｜是否會參加 10:30 開始的證婚儀式？<span class="req">*</span></legend>
+          <legend class="field__label">Q4｜是否會參加 10:30 開始的證婚儀式？⁠<span class="req">*</span></legend>
           <div class="choice-group" role="radiogroup" aria-describedby="q4-error">
             <label class="choice" data-type="radio">
               <input type="radio" name="q4_ceremony" value="會參加，準時到場見證" required>
@@ -330,7 +330,7 @@
 
         <!-- Q5 是否參加婚宴 -->
         <fieldset class="field" id="field-q5">
-          <legend class="field__label">Q5｜是否會參加 12:10 開席的婚宴？<span class="req">*</span></legend>
+          <legend class="field__label">Q5｜是否會參加 12:10 開席的婚宴？⁠<span class="req">*</span></legend>
           <div class="choice-group" role="radiogroup" aria-describedby="q5-error">
             <label class="choice" data-type="radio">
               <input type="radio" name="q5_banquet" value="一定出席，我會準時到！" required>
@@ -357,7 +357,7 @@
           <div class="field-row">
             <!-- Q6 出席大人人數 -->
             <div class="field" id="field-q6">
-              <label class="field__label" for="q6">Q6｜出席婚宴的大人人數（不含兒童）<span class="req">*</span></label>
+              <label class="field__label" for="q6">Q6｜出席婚宴的大人人數（不含兒童）⁠<span class="req">*</span></label>
               <input class="input" type="number" id="q6" name="q6_adults" min="0" step="1" inputmode="numeric"
                      aria-describedby="q6-error" placeholder="例如：2">
               <p class="field__error" id="q6-error" role="alert">請填寫大於等於 0 的數字</p>
@@ -365,7 +365,7 @@
 
             <!-- Q7 出席兒童人數 -->
             <div class="field" id="field-q7">
-              <label class="field__label" for="q7">Q7｜出席婚宴的兒童人數（6 歲以下）<span class="req">*</span></label>
+              <label class="field__label" for="q7">Q7｜出席婚宴的兒童人數（6 歲以下）⁠<span class="req">*</span></label>
               <input class="input" type="number" id="q7" name="q7_children" min="0" step="1" inputmode="numeric"
                      aria-describedby="q7-hint q7-error" placeholder="無則填 0">
               <p class="field__hint" id="q7-hint">無則填 0</p>
@@ -402,7 +402,7 @@
 
           <!-- Q9 本人用餐習慣（僅出席婚宴者需填寫，required 由 JS 動態控制，不寫死於 HTML） -->
           <fieldset class="field" id="field-q9">
-            <legend class="field__label">Q9｜本人用餐習慣（葷食／素食）<span class="req">*</span></legend>
+            <legend class="field__label">Q9｜本人用餐習慣（葷食／素食）⁠<span class="req">*</span></legend>
             <div class="choice-group" role="radiogroup" aria-describedby="q9-error">
               <label class="choice" data-type="radio">
                 <input type="radio" name="q9_diet_self" value="葷食皆可">
@@ -431,7 +431,7 @@
           <!-- Q10 同行者用餐習慣（全新題目）：只在 Q6 大人人數 > 1 時顯示（hidden/required 由 JS 動態控制） -->
           <div class="field-group" id="q10-detail" hidden>
             <fieldset class="field" id="field-q10">
-              <legend class="field__label">Q10｜同行者用餐習慣（葷食／素食）<span class="req">*</span></legend>
+              <legend class="field__label">Q10｜同行者用餐習慣（葷食／素食）⁠<span class="req">*</span></legend>
               <div class="choice-group" role="radiogroup" aria-describedby="q10-error">
                 <label class="choice" data-type="radio">
                   <input type="radio" name="q10_diet_guest" value="葷食皆可">
@@ -479,13 +479,13 @@
                 <span>紅白小湯圓</span>
               </label>
             </div>
-            <p class="field__hint" id="q-dessert-vote-hint">每人一票，得票最高的口味將成為當天菜單～</p>
+            <p class="field__hint" id="q-dessert-vote-hint">每人一票，得票最高的口味將成為當天的菜單唷～</p>
           </fieldset>
         </div>
 
         <!-- Q12 喜帖寄送 -->
         <fieldset class="field" id="field-q12">
-          <legend class="field__label">Q12｜喜帖需要寄送嗎？<span class="req">*</span></legend>
+          <legend class="field__label">Q12｜喜帖需要寄送嗎？⁠<span class="req">*</span></legend>
           <div class="choice-group" role="radiogroup" aria-describedby="q12-error">
             <label class="choice" data-type="radio">
               <input type="radio" name="q12_invitation" value="想收到紙本喜帖，請寄給我" required>
@@ -498,9 +498,9 @@
               <span>請寄電子喜帖給我（環保愛地球）</span>
             </label>
             <label class="choice" data-type="radio">
-              <input type="radio" name="q12_invitation" value="不需要，我都知道婚禮資訊了" required>
+              <input type="radio" name="q12_invitation" value="不需要，我都知道婚禮資訊" required>
               <span class="choice__box" aria-hidden="true"></span>
-              <span>不需要，我都知道婚禮資訊了</span>
+              <span>不需要，我都知道婚禮資訊</span>
             </label>
           </div>
           <p class="field__error" id="q12-error" role="alert">請選擇一個選項</p>
@@ -509,7 +509,7 @@
         <!-- Q13：只在 Q12 選「紙本喜帖」時顯示 -->
         <div class="field-group" id="q12-detail" hidden>
           <div class="field" id="field-q13">
-            <label class="field__label" for="q13">Q13｜喜帖寄送地址<span class="req">*</span></label>
+            <label class="field__label" for="q13">Q13｜喜帖寄送地址⁠<span class="req">*</span></label>
             <input class="input" type="text" id="q13" name="q13_address"
                    aria-describedby="q13-error" placeholder="請填寫完整收件地址">
             <p class="field__error" id="q13-error" role="alert">請填寫喜帖寄送地址</p>
@@ -518,7 +518,7 @@
 
         <!-- Q14 手機號碼 -->
         <div class="field" id="field-q14">
-          <label class="field__label" for="q14">Q14｜您的手機號碼<span class="req">*</span></label>
+          <label class="field__label" for="q14">Q14｜您的手機號碼⁠<span class="req">*</span></label>
           <input class="input" type="tel" id="q14" name="q14_phone" required
                  aria-describedby="q14-error" placeholder="例：0912345678">
           <p class="field__error" id="q14-error" role="alert">請填寫手機號碼</p>
@@ -526,7 +526,7 @@
 
         <!-- Q15 Email/LINE ID -->
         <div class="field" id="field-q15">
-          <label class="field__label" for="q15">Q15｜Email（方便通知婚禮相關訊息）<span class="req">*</span></label>
+          <label class="field__label" for="q15">Q15｜Email（方便通知婚禮相關訊息）⁠<span class="req">*</span></label>
           <input class="input" type="text" id="q15" name="q15_contact" required
                  aria-describedby="q15-error" placeholder="Email">
           <p class="field__error" id="q15-error" role="alert">請填寫 Email</p>
@@ -534,7 +534,7 @@
 
         <!-- Q16 是否開車前來 -->
         <fieldset class="field" id="field-q16">
-          <legend class="field__label">Q16｜是否需要開車前來？<span class="req">*</span></legend>
+          <legend class="field__label">Q16｜是否需要開車前來？⁠<span class="req">*</span></legend>
           <div class="choice-group" role="radiogroup" aria-describedby="q16-hint q16-error">
             <label class="choice" data-type="radio">
               <input type="radio" name="q16_parking" value="不開車" required>
@@ -603,7 +603,7 @@
         <p class="tip-card__text">
           <strong>南下</strong>：國道一號大雅交流道下，左轉環中路直行，再右轉松竹路三段、崇德路二段即可抵達。<br>
           <strong>北上</strong>：國道一號中港交流道下，直行台灣大道，左轉文心路三段、崇德路二段即可抵達。<br>
-          <strong>高鐵</strong>：烏日站轉搭捷運淺綠線至北屯站，步行或搭公車約 10–15 分鐘即達。<br><br>
+          <strong>高鐵</strong>：烏日站轉搭捷運淺綠線至北屯站，步行或搭公車約 10–15 分鐘即可抵達。<br><br>
           蘭克斯特步行 5 分鐘即達中科大飯店，外地賓客住宿方便。
         </p>
       </div>
@@ -614,7 +614,7 @@
         </svg>
         <h3 class="tip-card__title">停車</h3>
         <p class="tip-card__text">
-          特約停車場「松竹停車場」：新人招待前 4 小時，超過部分每小時 20 元。<br><br>
+          特約停車場「松竹停車場」：新人招待前 4 小時，超過部分每小時 20 元整。<br><br>
           隔壁「日月亭停車場」每小時 60 元（無特約優惠），松竹車位客滿時可作備案。
         </p>
       </div>
