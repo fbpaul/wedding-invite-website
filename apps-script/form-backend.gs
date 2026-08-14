@@ -31,7 +31,7 @@ var HEADERS = [
   'Q12 喜帖寄送方式',
   'Q13 喜帖寄送地址',
   'Q14 手機號碼',
-  'Q15 Email 或 LINE ID',
+  'Q15 Email',
   'Q16 是否開車前來',
   'Q17 祝福留言',
   '花好月圓投票'
@@ -141,7 +141,7 @@ function test_doPost() {
         q2_relation: '男方（新郎）親友',
         q3_connection: '朋友',
         q4_ceremony: '會參加，準時到場見證',
-        q5_banquet: '一定出席，麻煩算我一份！',
+        q5_banquet: '一定出席，我會準時到！',
         q6_adults: '2',
         q7_children: '0',
         q8_childneeds: '不需要',

@@ -195,7 +195,7 @@ const FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbycfZCNFJV1gv1jiW
 
   // ------------------------------------------------------------
   // 條件顯示邏輯：
-  //   Q6-Q11   只在 Q5 選「一定出席，麻煩算我一份！」時顯示
+  //   Q6-Q11   只在 Q5 選「一定出席，我會準時到！」時顯示
   //   Q10      巢狀條件：另外要求 Q6（大人人數）目前是大於 1 的合法數字
   //   Q13      只在 Q12 選「想收到紙本喜帖，請寄給我」時顯示
   // ------------------------------------------------------------
@@ -210,7 +210,7 @@ const FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbycfZCNFJV1gv1jiW
 
     function isAttendingBanquet() {
       var checked = document.querySelector('input[name="q5_banquet"]:checked');
-      return !!(checked && checked.value === '一定出席，麻煩算我一份！');
+      return !!(checked && checked.value === '一定出席，我會準時到！');
     }
 
     // Q10（同行者用餐習慣）：Q5 出席 且 Q6 大人人數 > 1 才顯示／必填

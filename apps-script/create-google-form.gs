@@ -41,8 +41,8 @@ function createWeddingRSVPForm() {
 
   // Q1
   form.addTextItem()
-    .setTitle('Q1｜可以留下您的大名嗎？')
-    .setHelpText('會用來核對賓客名單與喜帖')
+    .setTitle('Q1｜可以留下您的大名嗎？🌸')
+    .setHelpText('請填寫全名唷，不然我們會認不出是哪位貴賓大駕光臨～')
     .setRequired(true);
 
   // Q2
@@ -66,7 +66,7 @@ function createWeddingRSVPForm() {
   // Q5
   form.addMultipleChoiceItem()
     .setTitle('Q5｜是否會參加 12:10 開席的婚宴？')
-    .setChoiceValues(['一定出席，麻煩算我一份！', '禮到人不到，仍請保留祝福', '無法出席，獻上誠摯祝福'])
+    .setChoiceValues(['一定出席，我會準時到！', '禮到人不到，仍請保留祝福', '無法出席，獻上誠摯祝福'])
     .setRequired(true);
 
   // Q6（簡化：非必填 + 數字驗證，說明文字取代條件顯示）
@@ -136,7 +136,7 @@ function createWeddingRSVPForm() {
 
   // Q15（網站版無條件必填，這裡維持必填，不套用簡化模式）
   form.addTextItem()
-    .setTitle('Q15｜Email 或 LINE ID（方便通知婚禮相關訊息）')
+    .setTitle('Q15｜Email（方便通知婚禮相關訊息）')
     .setRequired(true);
 
   // Q16（網站版無條件必填，這裡維持必填；選項大幅簡化成兩個）
