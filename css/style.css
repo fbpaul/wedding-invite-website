@@ -171,6 +171,11 @@ section { padding-block: var(--space-2xl); position: relative; }
 .btn--ghost-dark { background: transparent; color: var(--color-bg); border-color: rgba(250,247,251,.5); }
 .btn--ghost-dark:hover { background: rgba(250,247,251,.1); }
 
+/* LINE 官方綠：純正 #06C755 配白字對比僅 2.3:1 過不了 AA，改用同色相但加深的版本（4.75:1），
+   仍讀得出「LINE 綠」但符合無障礙標準 */
+.btn--line { background: #04853A; color: #FFFFFF; }
+.btn--line:hover { background: #036B2F; transform: translateY(-2px); box-shadow: var(--shadow-md); }
+
 .btn--text { min-height: auto; padding: 4px 0; color: var(--color-primary); border-radius: 0; font-size: var(--fs-small); letter-spacing: 0.02em; }
 
 .btn--sm { min-height: 40px; padding: 0 20px; }
